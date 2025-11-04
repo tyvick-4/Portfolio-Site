@@ -4,9 +4,9 @@ import { CareerHighlight, CaseStudy, SkillCategory } from './types';
 export const PERSONAL_INFO = {
   name: "Tyler Vickers",
   title: "Senior Product Manager",
-  headshot: "https://picsum.photos/seed/headshot/400/400",
-  linkedin: "https://www.linkedin.com/in/your-profile",
-  email: "tyler.vickers.pm@example.com",
+  headshot: "https://drive.google.com/file/d/1aFZbgO-XegkXw2Bw2vxzdKxK2mr605xL/view?usp=sharing",
+  linkedin: "https://www.linkedin.com/in/tyler-vickers-1128258/",
+  email: "tyvick@gmail.com",
   valueProp: "AI-fluent PM with a proven track record launching B2C products used and viewed by millions of viewers and creators. I excel at bridging the gap between non-technical teams and core engineering cohorts.",
 };
 
