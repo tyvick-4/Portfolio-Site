@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { PERSONAL_INFO } from '../constants';
 import LinkedInIcon from '../components/icons/LinkedInIcon';
@@ -10,7 +9,7 @@ const ContactPage: React.FC = () => {
         <div className="container mx-auto px-6 py-16 text-center">
             <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">Let's Connect</h1>
             <p className="text-lg md:text-xl text-slate-400 max-w-2xl mx-auto mb-12">
-                I'm currently seeking opportunities in Growth, Customer Lifecycle, and Product Management within the video streaming and creator economy spaces. If you have a role that aligns with my experience, I'd love to hear from you.
+                I'm currently seeking Senior PM opportunities in Growth, Personalization, or Customer Lifecycle—particularly at companies building the future of video streaming and creator tools. I'm especially interested in roles where I can leverage AI/ML to drive measurable user outcomes.
             </p>
             
             <div className="flex flex-col md:flex-row justify-center items-center gap-8">

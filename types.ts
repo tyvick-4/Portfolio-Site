@@ -1,4 +1,3 @@
-
 export interface CareerHighlight {
   metric: string;
   description: string;
@@ -15,6 +14,7 @@ export interface CaseStudy {
   title: string;
   subtitle: string;
   heroImage: string;
+  heroVideo?: string; // Optional video that takes precedence over heroImage
   company: string;
   role: string;
   duration: string;

@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { CASE_STUDIES } from '../constants';
@@ -20,11 +19,32 @@ const CaseStudyPage: React.FC = () => {
     );
   }
 
+  // Determine if this case study has a video instead of an image
+  const hasVideo = caseStudy.heroVideo !== undefined;
+  const mediaSource = hasVideo ? caseStudy.heroVideo : caseStudy.heroImage;
+
   return (
     <div>
       {/* Hero Section */}
-      <div className="relative h-96">
-        <img src={caseStudy.heroImage} alt={caseStudy.title} className="absolute inset-0 w-full h-full object-cover" />
+      <div className="relative h-96 bg-slate-900">
+        {hasVideo ? (
+          // Video Hero
+          <video 
+            src={mediaSource} 
+            autoPlay 
+            loop 
+            muted 
+            playsInline
+            className="absolute inset-0 w-full h-full object-cover"
+          />
+        ) : (
+          // Image Hero
+          <img 
+            src={mediaSource} 
+            alt={caseStudy.title} 
+            className="absolute inset-0 w-full h-full object-cover" 
+          />
+        )}
         <div className="absolute inset-0 bg-slate-900/70"></div>
         <div className="relative container mx-auto px-6 h-full flex flex-col justify-center text-white">
           <h1 className="text-4xl md:text-5xl font-bold mb-2">{caseStudy.title}</h1>

@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { PERSONAL_INFO, SKILL_CATEGORIES } from '../constants';
 import { CheckCircleIcon } from '../components/icons/CheckCircleIcon';
@@ -21,13 +20,13 @@ const AboutPage: React.FC = () => {
           <h2 className="text-3xl font-bold text-white text-center mb-8">My Story</h2>
           <div className="bg-slate-800/50 p-8 rounded-lg space-y-4 text-lg leading-relaxed">
             <p>
-              With over 7 years in product management, I've developed a passion for understanding customer problems and translating those insights into engaging, high-impact products. My journey has taken me from the fast-paced world of creator content at Twitch to leading growth and personalization initiatives for millions of Fire TV customers at Amazon.
+              I've spent 7 years building products that millions of people use every day—from helping Twitch creators grow their audiences to making Fire TV customers' content discovery experience actually useful. What drives me is taking messy, complex problems and turning them into products people love.
             </p>
             <p>
-              I thrive at the intersection of data, technology, and user experience. My unique value comes from being an AI-fluent PM who can not only strategize with data but also prototype with tools like Python and Amazon Q. I excel in communicating complex technical concepts to non-technical stakeholders, ensuring everyone is aligned and moving towards the same goal.
+              I'm technical enough to prototype solutions in Python and evaluate AI models, but I've never forgotten that great products start with understanding people. Whether that's sitting with Twitch streamers to understand their workflow or analyzing why Fire TV customers abandon the platform, I believe the best product decisions come from combining data with genuine customer empathy.
             </p>
             <p>
-              My goal is to continue building products that people love, particularly in the growth and customer lifecycle space at innovative companies like Google and YouTube. I believe my collaborative spirit and data-driven approach can help teams tackle their most ambitious challenges.
+              Right now, I'm looking for my next challenge in growth or customer lifecycle at companies pushing the boundaries of video streaming and the creator economy. I work best in environments where teams move fast, debates are healthy, and everyone's focused on impact over process.
             </p>
           </div>
         </section>
