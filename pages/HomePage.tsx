@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { PERSONAL_INFO, CAREER_HIGHLIGHTS, CASE_STUDIES } from '../constants';
@@ -71,7 +70,18 @@ const HomePage: React.FC = () => {
                 </Link>
               </div>
               <div className="h-64 lg:h-full">
-                <img src={study.heroImage} alt={study.title} className="w-full h-full object-cover"/>
+                {study.heroVideo ? (
+                  <video 
+                    src={study.heroVideo} 
+                    autoPlay 
+                    loop 
+                    muted 
+                    playsInline
+                    className="w-full h-full object-cover"
+                  />
+                ) : (
+                  <img src={study.heroImage} alt={study.title} className="w-full h-full object-cover"/>
+                )}
               </div>
             </div>
           ))}
