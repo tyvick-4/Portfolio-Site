@@ -7,7 +7,7 @@ export const PERSONAL_INFO = {
   headshot: "/headshot.jpg",
   linkedin: "https://www.linkedin.com/in/tyler-vickers-1128258/",
   email: "tyvick@gmail.com",
-  valueProp: "Hey there, welcome! I'm Tyler, a Senior PM lucky and grateufl to have launched features used by millions daily on Twitch and Fire TV. I turn complex data into actionable product strategies and bring technical and non-technical teams together to ship features that drive measurable growth.",
+  valueProp: "Hey there, welcome! I'm Tyler, a grateful Senior PM privileged to have built and launched features used by millions daily on Twitch and Fire TV. I turn complex data into actionable product strategies and bring technical and non-technical teams together to ship features that drive measurable growth.",
 };
 
 export const CAREER_HIGHLIGHTS: CareerHighlight[] = [
