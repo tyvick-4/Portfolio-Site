@@ -43,12 +43,14 @@ const HomePage: React.FC = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.5 }}
           >
-            <a 
-              href="#work" 
-              className="bg-amber-500 text-black text-sm font-medium py-3 px-8 rounded-xl hover:bg-orange-500 transition-all duration-300 transform hover:scale-105 hover:shadow-lg hover:shadow-amber-500/30 tracking-wider"
-            >
-              View My Work
-            </a>
+           <button
+  onClick={() => {
+    document.getElementById('work')?.scrollIntoView({ behavior: 'smooth' });
+  }}
+  className="bg-amber-500 text-black text-sm font-medium py-3 px-8 rounded-xl hover:bg-orange-500 transition-all duration-300 transform hover:scale-105 hover:shadow-lg hover:shadow-amber-500/30 tracking-wider"
+>
+  View My Work
+</button>
             <Link 
               to="/contact" 
               className="bg-[#1f1b16] text-white text-sm font-medium py-3 px-8 rounded-xl hover:bg-[#252018] border border-[#292520] transition-all duration-300 transform hover:scale-105 tracking-wider"
