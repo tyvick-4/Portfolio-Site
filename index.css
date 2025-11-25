@@ -1,0 +1,101 @@
+/* Modern Font Stack - Option 1: Inter + DM Serif Display */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=DM+Serif+Display:ital@0;1&display=swap');
+
+/* Alternative Font Stack - Option 2: Outfit + Fraunces (commented out)
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,400&display=swap');
+*/
+
+/* Alternative Font Stack - Option 3: Work Sans + Playfair Display (commented out)
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap');
+*/
+
+:root {
+  /* Color Palette - Amber Glow */
+  --color-bg-primary: #0a0a0a;
+  --color-bg-secondary: #1a1410;
+  --color-bg-card: #1f1b16;
+  --color-bg-card-hover: #252018;
+  
+  --color-text-primary: #fafaf9;
+  --color-text-secondary: #d6d3d1;
+  --color-text-muted: #a8a29e;
+  
+  --color-accent-primary: #fbbf24;
+  --color-accent-secondary: #f59e0b;
+  --color-accent-hover: #f97316;
+  
+  --color-border: #292520;
+  --color-border-light: #3a342c;
+  
+  /* Typography */
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-display: 'DM Serif Display', Georgia, serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-sans);
+  background: var(--color-bg-primary);
+  color: var(--color-text-secondary);
+  line-height: 1.7;
+  letter-spacing: 0.01em;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
+  color: var(--color-text-primary);
+  line-height: 1.3;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+h1 {
+  font-size: 3.5rem;
+  letter-spacing: -0.03em;
+  line-height: 1.2;
+}
+
+h2 {
+  font-size: 2.5rem;
+  letter-spacing: -0.02em;
+  line-height: 1.25;
+}
+
+h3 {
+  font-size: 1.875rem;
+  letter-spacing: -0.01em;
+  line-height: 1.3;
+}
+
+p {
+  line-height: 1.8;
+  letter-spacing: 0.01em;
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-bg-primary);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-bg-card);
+  border-radius: 6px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-accent-secondary);
+}

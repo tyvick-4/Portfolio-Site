@@ -1,55 +1,92 @@
 import React from 'react';
+import { motion } from 'motion/react';
 import { PERSONAL_INFO, SKILL_CATEGORIES } from '../constants';
-import { CheckCircleIcon } from '../components/icons/CheckCircleIcon';
 
 const AboutPage: React.FC = () => {
   return (
     <div className="container mx-auto px-6 py-16">
-      <div className="max-w-4xl mx-auto">
-        <section className="text-center mb-16">
-          <img 
-            src={PERSONAL_INFO.headshot} 
-            alt="Professional Headshot" 
-            className="w-48 h-48 rounded-full mx-auto mb-6 border-4 border-slate-700 shadow-lg"
-          />
-          <h1 className="text-4xl md:text-5xl font-bold text-white mb-2">About Me</h1>
-          <p className="text-xl text-blue-400">{PERSONAL_INFO.title}</p>
-        </section>
+      <motion.div 
+        className="max-w-4xl mx-auto"
+        initial={{ opacity: 0, y: 30 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8 }}
+      >
+        <h1 className="text-5xl text-white mb-8 text-center">About Me</h1>
+        
+        <div className="flex flex-col md:flex-row gap-12 items-start mb-16">
+          <motion.div 
+            className="md:w-1/3"
+            initial={{ opacity: 0, x: -30 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+          >
+            <div className="relative">
+              <div className="absolute inset-0 bg-gradient-to-br from-amber-500/20 to-orange-500/20 rounded-2xl blur-xl" />
+              <img 
+                src={PERSONAL_INFO.headshot} 
+                alt={PERSONAL_INFO.name} 
+                className="relative rounded-2xl w-full shadow-2xl border-2 border-[#292520]"
+              />
+            </div>
+          </motion.div>
+          
+          <motion.div 
+            className="md:w-2/3 space-y-6"
+            initial={{ opacity: 0, x: 30 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, delay: 0.3 }}
+          >
+            <div>
+              <h2 className="text-3xl text-white mb-4 tracking-tight">{PERSONAL_INFO.name}</h2>
+              <p className="text-xl text-amber-400 mb-6 tracking-wide">{PERSONAL_INFO.title}</p>
+              <p className="text-stone-300 leading-loose text-lg tracking-wide">
+                {PERSONAL_INFO.valueProp}
+              </p>
+            </div>
+            
+            <div className="pt-6">
+              <p className="text-stone-300 leading-loose tracking-wide">
+                I thrive at the intersection of data, user empathy, and technical execution. 
+                Whether it's building lifecycle models to reduce churn, launching creator tools 
+                that scale to millions, or navigating complex cross-functional challenges, I bring 
+                a blend of strategic thinking and hands-on execution.
+              </p>
+            </div>
+          </motion.div>
+        </div>
 
-        <section className="mb-16">
-          <h2 className="text-3xl font-bold text-white text-center mb-8">My Story</h2>
-          <div className="bg-slate-800/50 p-8 rounded-lg space-y-4 text-lg leading-relaxed">
-            <p>
-              I've spent 7 years building products that millions of people use every day—from helping Twitch creators grow their audiences to making Fire TV customers' content discovery experience actually useful. What drives me is taking messy, complex problems and turning them into products people love.
-            </p>
-            <p>
-              I'm technical enough to prototype solutions in Python and evaluate AI models, but I've never forgotten that great products start with understanding people. Whether that's sitting with Twitch streamers to understand their workflow or analyzing why Fire TV customers abandon the platform, I believe the best product decisions come from combining data with genuine customer empathy.
-            </p>
-            <p>
-              Right now, I'm looking for my next challenge in growth or customer lifecycle at companies pushing the boundaries of video streaming and the creator economy. I work best in environments where teams move fast, debates are healthy, and everyone's focused on impact over process.
-            </p>
-          </div>
-        </section>
-
-        <section>
-          <h2 className="text-3xl font-bold text-white text-center mb-8">My Skills</h2>
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.4 }}
+        >
+          <h2 className="text-3xl text-white mb-10 text-center">Skills & Expertise</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {SKILL_CATEGORIES.map((category) => (
-              <div key={category.title} className="bg-slate-800 p-6 rounded-lg">
-                <h3 className="text-xl font-bold text-blue-400 mb-4">{category.title}</h3>
+            {SKILL_CATEGORIES.map((category, categoryIndex) => (
+              <motion.div 
+                key={category.title}
+                className="bg-gradient-to-br from-[#1f1b16] to-[#252018] p-8 rounded-2xl border border-[#292520] hover:border-[#3a342c] transition-all duration-300"
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.5 + categoryIndex * 0.1 }}
+              >
+                <h3 className="text-xl text-amber-400 mb-6">{category.title}</h3>
                 <ul className="space-y-3">
                   {category.skills.map((skill) => (
-                    <li key={skill.name} className="flex items-start">
-                      <CheckCircleIcon className="w-5 h-5 text-green-400 mr-3 mt-1 flex-shrink-0" />
+                    <li 
+                      key={skill.name} 
+                      className="text-stone-300 flex items-start"
+                    >
+                      <span className="text-amber-400 mr-3">•</span>
                       <span>{skill.name}</span>
                     </li>
                   ))}
                 </ul>
-              </div>
+              </motion.div>
             ))}
           </div>
-        </section>
-      </div>
+        </motion.div>
+      </motion.div>
     </div>
   );
 };
