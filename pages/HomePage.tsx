@@ -1,75 +1,126 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { motion } from 'motion/react';
 import { PERSONAL_INFO, CAREER_HIGHLIGHTS, CASE_STUDIES } from '../constants';
+import MetricCard from '../components/MetricCard';
 
 const HomePage: React.FC = () => {
   return (
     <div className="container mx-auto px-6 py-12">
       {/* Hero Section */}
-      <section className="flex flex-col md:flex-row items-center text-center md:text-left min-h-[60vh]">
-        <div className="md:w-2/3">
-          <h1 className="text-4xl md:text-6xl font-bold text-white mb-4">
+      <section className="relative min-h-screen flex items-center bg-gradient-to-br from-[#0a0a0a] via-[#1a1410] to-[#0a0a0a]">
+        <div className="absolute inset-0 opacity-20">
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,_#fbbf24_0%,_transparent_50%)]"></div>
+        </div>
+        <div className="container mx-auto px-6 py-20 relative z-10">
+          <motion.h1 
+            className="text-5xl md:text-7xl text-white mb-6 tracking-tight"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+          >
             {PERSONAL_INFO.name}
-          </h1>
-          <h2 className="text-2xl md:text-3xl text-blue-400 mb-6">
+          </motion.h1>
+          <motion.h2 
+            className="text-2xl md:text-4xl text-amber-400 mb-8 tracking-normal"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.3 }}
+          >
             {PERSONAL_INFO.title}
-          </h2>
-          <p className="text-lg md:text-xl max-w-2xl mx-auto md:mx-0 mb-8">
+          </motion.h2>
+          <motion.p 
+            className="text-lg md:text-xl max-w-2xl mx-auto md:mx-0 mb-10 leading-loose tracking-wide"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+          >
             {PERSONAL_INFO.valueProp}
-          </p>
-          <div className="flex justify-center md:justify-start space-x-4">
-            <a href="#work" className="bg-blue-600 text-white font-bold py-3 px-6 rounded-lg hover:bg-blue-700 transition-transform transform hover:scale-105">
+          </motion.p>
+          <motion.div 
+            className="flex justify-center md:justify-start space-x-4"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.5 }}
+          >
+            <a 
+              href="#work" 
+              className="bg-amber-500 text-black text-sm font-medium py-3 px-8 rounded-xl hover:bg-orange-500 transition-all duration-300 transform hover:scale-105 hover:shadow-lg hover:shadow-amber-500/30 tracking-wider"
+            >
               View My Work
             </a>
-            <Link to="/contact" className="bg-slate-700 text-white font-bold py-3 px-6 rounded-lg hover:bg-slate-600 transition-transform transform hover:scale-105">
+            <Link 
+              to="/contact" 
+              className="bg-[#1f1b16] text-white text-sm font-medium py-3 px-8 rounded-xl hover:bg-[#252018] border border-[#292520] transition-all duration-300 transform hover:scale-105 tracking-wider"
+            >
               Contact Me
             </Link>
-          </div>
-        </div>
-        <div className="md:w-1/3 mt-10 md:mt-0 flex justify-center">
-            <img 
-                src={PERSONAL_INFO.headshot} 
-                alt="Professional Headshot" 
-                className="rounded-full w-64 h-64 md:w-80 md:h-80 object-cover shadow-2xl border-4 border-slate-700"
-            />
+          </motion.div>
         </div>
       </section>
 
       {/* Career Highlights Section */}
-      <section className="py-20">
-        <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-white">Career Highlights</h2>
-            <p className="text-lg text-slate-400 mt-2">Proven impact at scale.</p>
-        </div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+      <section className="py-24">
+        <motion.div 
+          className="text-center mb-16"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.6 }}
+        >
+          <h2 className="text-4xl md:text-5xl text-white mb-4">Career Highlights</h2>
+          <p className="text-xl text-slate-400">Proven impact at scale.</p>
+        </motion.div>
+        
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
           {CAREER_HIGHLIGHTS.map((highlight, index) => (
-            <div key={index} className="bg-slate-800 p-8 rounded-lg shadow-lg text-center transform hover:-translate-y-2 transition-transform duration-300">
-              <p className="text-5xl font-extrabold text-blue-400 mb-2">{highlight.metric}</p>
-              <p className="text-xl font-semibold text-white mb-2">{highlight.description}</p>
-              <p className="text-slate-400">{highlight.details}</p>
-            </div>
+            <MetricCard
+              key={index}
+              metric={highlight.metric}
+              description={highlight.description}
+              details={highlight.details}
+              index={index}
+              variant="default"
+            />
           ))}
         </div>
       </section>
 
       {/* Featured Work Section */}
-      <section id="work" className="py-20">
-        <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-white">Featured Work</h2>
-            <p className="text-lg text-slate-400 mt-2">Diving deep into product challenges and delivering results.</p>
-        </div>
+      <section id="work" className="py-24">
+        <motion.div 
+          className="text-center mb-16"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.6 }}
+        >
+          <h2 className="text-4xl md:text-5xl text-white mb-4">Featured Work</h2>
+          <p className="text-xl text-slate-400">Diving deep into product challenges and delivering results.</p>
+        </motion.div>
+        
         <div className="space-y-16">
-          {CASE_STUDIES.map((study) => (
-            <div key={study.slug} className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center bg-slate-800/50 rounded-lg overflow-hidden shadow-xl">
+          {CASE_STUDIES.map((study, index) => (
+            <motion.div 
+              key={study.slug}
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.6, delay: index * 0.1 }}
+              className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center bg-gradient-to-br from-slate-900/80 to-slate-800/40 rounded-2xl overflow-hidden shadow-xl border border-slate-800/50 hover:border-slate-700/50 transition-all duration-500 group"
+            >
               <div className="p-8 lg:p-12">
-                <h3 className="text-2xl font-bold text-white mb-2">{study.title}</h3>
-                <p className="text-blue-400 mb-4">{study.company}</p>
-                <p className="mb-6">{study.subtitle}</p>
-                <Link to={`/case-study/${study.slug}`} className="bg-blue-600 text-white font-bold py-3 px-6 rounded-lg hover:bg-blue-700 transition-transform transform hover:scale-105 inline-block">
+                <h3 className="text-3xl text-white mb-3 leading-snug">{study.title}</h3>
+                <p className="text-amber-400 mb-6 text-lg tracking-wide">{study.company}</p>
+                <p className="mb-8 text-stone-300 leading-loose tracking-wide">{study.subtitle}</p>
+                <Link 
+                  to={`/case-study/${study.slug}`} 
+                  className="inline-block bg-amber-500 text-black text-sm font-medium py-3 px-8 rounded-xl hover:bg-orange-500 transition-all duration-300 transform hover:scale-105 hover:shadow-lg hover:shadow-amber-500/30 tracking-wider"
+                >
                   Read Case Study
                 </Link>
               </div>
-              <div className="h-64 lg:h-full">
+              <div className="h-64 lg:h-full relative overflow-hidden">
                 {study.heroVideo ? (
                   <video 
                     src={study.heroVideo} 
@@ -77,13 +128,18 @@ const HomePage: React.FC = () => {
                     loop 
                     muted 
                     playsInline
-                    className="w-full h-full object-cover"
+                    className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700"
                   />
                 ) : (
-                  <img src={study.heroImage} alt={study.title} className="w-full h-full object-cover"/>
+                  <img 
+                    src={study.heroImage} 
+                    alt={study.title} 
+                    className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700"
+                  />
                 )}
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-900/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
       </section>
