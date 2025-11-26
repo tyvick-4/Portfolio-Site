@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { motion } from 'motion/react';
 import { CASE_STUDIES } from '../constants';
@@ -8,6 +8,11 @@ import MetricCard from '../components/MetricCard';
 const CaseStudyPage: React.FC = () => {
   const { slug } = useParams<{ slug: string }>();
   const caseStudy = CASE_STUDIES.find((cs) => cs.slug === slug);
+
+  // Scroll to top when navigating to this page or when slug changes
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [slug]);
 
   if (!caseStudy) {
     return (
