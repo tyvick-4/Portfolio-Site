@@ -115,26 +115,48 @@ const CaseStudyPage: React.FC = () => {
           </motion.div>
           
           <motion.div 
-            className="prose prose-invert lg:prose-xl max-w-none prose-h2:text-white prose-h3:text-slate-200 prose-p:text-stone-300 prose-p:leading-loose prose-p:tracking-wide prose-a:text-amber-400 prose-strong:text-slate-100 prose-li:marker:text-amber-400 prose-li:text-stone-300 prose-li:leading-relaxed"
+            className="space-y-12"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.3 }}
           >
-            <h2>Overview</h2>
-            <p>{caseStudy.overview}</p>
+            {/* Overview Section */}
+            <section>
+              <h2 className="text-3xl text-white mb-6">Overview</h2>
+              <p className="text-stone-300 text-lg leading-relaxed tracking-wide">{caseStudy.overview}</p>
+            </section>
             
-            <h2>The Problem</h2>
-            <p>{caseStudy.problem}</p>
+            {/* Problem Section */}
+            <section>
+              <h2 className="text-3xl text-white mb-6">The Problem</h2>
+              <p className="text-stone-300 text-lg leading-relaxed tracking-wide">{caseStudy.problem}</p>
+            </section>
             
-            <h2>My Approach</h2>
-            <ul>
-              {caseStudy.approach.map((step, index) => <li key={index}>{step}</li>)}
-            </ul>
+            {/* Approach Section */}
+            <section>
+              <h2 className="text-3xl text-white mb-6">My Approach</h2>
+              <ul className="space-y-4">
+                {caseStudy.approach.map((step, index) => (
+                  <li key={index} className="flex items-start gap-4">
+                    <span className="flex-shrink-0 w-2 h-2 mt-3 bg-amber-500 rounded-full"></span>
+                    <span className="text-stone-300 text-lg leading-relaxed">{step}</span>
+                  </li>
+                ))}
+              </ul>
+            </section>
             
-            <h2>Challenges & Solutions</h2>
-            <ul>
-              {caseStudy.challenges.map((challenge, index) => <li key={index}>{challenge}</li>)}
-            </ul>
+            {/* Challenges Section */}
+            <section>
+              <h2 className="text-3xl text-white mb-6">Challenges & Solutions</h2>
+              <ul className="space-y-6">
+                {caseStudy.challenges.map((challenge, index) => (
+                  <li key={index} className="flex items-start gap-4">
+                    <span className="flex-shrink-0 w-2 h-2 mt-3 bg-amber-500 rounded-full"></span>
+                    <span className="text-stone-300 text-lg leading-relaxed">{challenge}</span>
+                  </li>
+                ))}
+              </ul>
+            </section>
           </motion.div>
           
           {/* Results */}
