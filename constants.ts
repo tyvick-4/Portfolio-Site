@@ -48,15 +48,16 @@ export const CASE_STUDIES: CaseStudy[] = [
     overview: "Twitch creators attract new audiences through viral clips, but had no way to control which clips represented them on their channel pages. New viewers landing on a channel saw random clips—often low-quality or unrepresentative—leading to missed follow opportunities. I led the Clips team to build Featured Clips, giving creators editorial control over their best content and creating new discovery surfaces across Twitch.",
     problem: "When new viewers landed on a creator's channel, they had two options: watch a live stream (which might not represent the creator's best content) or scroll through an unfiltered list of clips. Creators had no control over which clips appeared first, meaning a viewer's first impression might be a low-quality clip from months ago. This hurt both creator growth and Twitch's ability to convert casual viewers into engaged community members. With over 1 billion clips on the platform, we needed a way to surface the best content.",
     approach: [
-      "Analyzed viewing patterns across 1 billion+ clips to understand what drove follows and repeat viewing. Discovered that clips featuring a creator's unique personality traits drove 3x higher follow rates than gameplay-only clips.",
+      "Analyzed viewing patterns across 1 billion+ clips to understand what drove follows and repeat viewing. Discovered that clips featuring a creator's unique personality traits drove 3x higher follow rates than gameplay-only clips. Also reviewed multiple UXR studies and talked with UXR team members about creators wanting more opportunities to showcase clips that they liked that were created from their livestreams, particularly on their channel page in offline states.",
       "Designed a creator-facing tool allowing streamers to select up to 5 'Featured Clips' that would appear prominently on their channel page. Prioritized simplicity—creators could feature clips in under 30 seconds.",
       "Partnered with the recommendations team to integrate Featured Clips into discovery surfaces beyond channel pages, including the Twitch homepage and game directory pages, multiplying the feature's reach.",
       "Navigated legacy infrastructure constraints by working with engineering to build a scalable clips metadata layer, avoiding a costly full-platform rebuild while unblocking future clips innovation.",
+      "Ensured that our feedback loop of new clips distribution appeared on our native mobile apps in a new content row, on the web client on both desktop and mobile web, and across channel pages with new rows in partnership with Viewer Experience product and design partners.
     ],
     challenges: [
       "Infrastructure risk: The clips system was built 6 years earlier and couldn't handle new metadata without risking platform stability. Solution: Worked with engineering to design a parallel metadata layer that could scale independently, buying time for future infrastructure investment.",
-      "Resource competition: Recommendations team was prioritizing algorithmic discovery over creator-curated content. Solution: Ran a 2-week A/B test showing Featured Clips drove 18% higher engagement than algo-only recommendations, securing team buy-in and engineering resources.",
-      "Creator adoption: Early testing showed only 15% of creators understood how to use the tool. Solution: Simplified the UI from a 5-step flow to 2 steps and added in-product education, increasing adoption to 40% within one quarter.",
+      "Resource competition: Recommendations team was prioritizing algorithmic discovery over creator-curated content. Solution: Ran new more data analysis on current clip viewership patterns (showing <10% of clips overall got the necessary viewership to use their proposed signals) and proposed a shared roadmap of new signals and weights to test in subsequent iterations of their net-new clisp recommendations model, securing team buy-in and engineering resources.",
+      "Creator adoption: Early testing showed a small but stat significant % of creators struggled to find the full featuring flow within our tools. Solution: Simplified the UI from a 5-step flow to 2 steps and added in-product education, increasing adoption to 40% within one quarter.",
     ],
     results: [
       {
@@ -75,7 +76,7 @@ export const CASE_STUDIES: CaseStudy[] = [
   },
   {
     slug: "project-orbit",
-    title: "Developing Project Orbit for Fire TV",
+    title: "Developing New Customer LIfeycycle Heuristics for Fire TV",
     subtitle: "Building a data-driven customer lifecycle framework to reduce churn and inform strategic targeting.",
     // TODO: Replace with actual Fire TV screenshot/graphic
     heroImage: "/images/project-orbit-hero.jpg",
@@ -88,7 +89,7 @@ export const CASE_STUDIES: CaseStudy[] = [
     approach: [
       "Built a 'state machine' customer lifecycle model that classified every Fire TV customer into one of four states based on monthly activity: New (first 30 days), Active (regularly engaged), At-Risk (declining engagement), or Churned (inactive 30+ days). This gave us a common language across teams.",
       "Partnered with data science to connect behavioral data (watch time, content types) with demographic data (household size, location). Discovered that Sports fans who didn't see Sports content in their first week were 40% more likely to churn.",
-      "Launched 'warm start' personalized content rows that used viewing signals from a customer's first session to surface relevant content immediately. Sports fans saw Sports highlights, families saw kids' content—no lengthy onboarding required.",
+      "Launched 'warm start' personalized content rows that used viewing signals from a customer's first session to surface relevant content immediately. Sports fans saw Sports highlights—no lengthy onboarding required.",
       "Created a retention playbook for marketing, identifying the top 3 at-risk cohorts each month and prescribing specific campaign tactics (e.g., email reminders for customers who hadn't opened the app in 2 weeks).",
     ],
     challenges: [
