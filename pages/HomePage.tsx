@@ -3,10 +3,13 @@ import { Link } from 'react-router-dom';
 import { motion } from 'motion/react';
 import { PERSONAL_INFO, CAREER_HIGHLIGHTS, CASE_STUDIES } from '../constants';
 import MetricCard from '../components/MetricCard';
+import SEO from '../components/SEO';
 
 const HomePage: React.FC = () => {
   return (
-    <div className="container mx-auto px-6 py-12">
+    <>
+      <SEO />
+      <div className="container mx-auto px-6 py-12">
       {/* Hero Section */}
       <section className="relative min-h-screen flex items-center bg-gradient-to-br from-[#0a0a0a] via-[#1a1410] to-[#0a0a0a]">
         <div className="absolute inset-0 opacity-20">
@@ -146,6 +149,7 @@ const HomePage: React.FC = () => {
         </div>
       </section>
     </div>
+    </>
   );
 };
 

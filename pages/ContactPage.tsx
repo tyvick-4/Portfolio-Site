@@ -3,6 +3,7 @@ import { motion } from 'motion/react';
 import { PERSONAL_INFO } from '../constants';
 import LinkedInIcon from '../components/icons/LinkedInIcon';
 import MailIcon from '../components/icons/MailIcon';
+import SEO from '../components/SEO';
 
 const ContactPage: React.FC = () => {
   const [formData, setFormData] = useState({
@@ -26,7 +27,13 @@ const ContactPage: React.FC = () => {
   };
 
   return (
-    <div className="container mx-auto px-6 py-16">
+    <>
+      <SEO
+        title={`Contact ${PERSONAL_INFO.name} - Get in Touch`}
+        description={`Reach out to ${PERSONAL_INFO.name} for product management opportunities, collaborations, or inquiries. Connect via LinkedIn or email.`}
+        url="https://tyvick.com/contact"
+      />
+      <div className="container mx-auto px-6 py-16">
       <motion.div 
         className="max-w-2xl mx-auto"
         initial={{ opacity: 0, y: 30 }}
@@ -119,6 +126,7 @@ const ContactPage: React.FC = () => {
         </motion.form>
       </motion.div>
     </div>
+    </>
   );
 };
 

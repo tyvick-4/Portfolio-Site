@@ -76,7 +76,7 @@ export const CASE_STUDIES: CaseStudy[] = [
   },
   {
     slug: "project-orbit",
-    title: "Developing New Customer LIfeycycle Heuristics for Fire TV",
+    title: "Developing New Customer Lifecycle Heuristics for Fire TV",
     subtitle: "Building a data-driven customer lifecycle framework to reduce churn and inform strategic targeting.",
     // TODO: Replace with actual Fire TV screenshot/graphic
     heroImage: "/images/project-orbit-hero.jpg",

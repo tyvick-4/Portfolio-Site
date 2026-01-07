@@ -1,10 +1,17 @@
 import React from 'react';
 import { motion } from 'motion/react';
 import { PERSONAL_INFO, SKILL_CATEGORIES } from '../constants';
+import SEO from '../components/SEO';
 
 const AboutPage: React.FC = () => {
   return (
-    <div className="container mx-auto px-6 py-16">
+    <>
+      <SEO
+        title={`About ${PERSONAL_INFO.name} - ${PERSONAL_INFO.title}`}
+        description={`Learn more about ${PERSONAL_INFO.name}, a Senior Product Manager with experience at Twitch and Amazon Fire TV. Skills in growth strategy, customer lifecycle, and cross-functional leadership.`}
+        url="https://tyvick.com/about"
+      />
+      <div className="container mx-auto px-6 py-16">
       <motion.div 
         className="max-w-4xl mx-auto"
         initial={{ opacity: 0, y: 30 }}
@@ -88,6 +95,7 @@ const AboutPage: React.FC = () => {
         </motion.div>
       </motion.div>
     </div>
+    </>
   );
 };
 

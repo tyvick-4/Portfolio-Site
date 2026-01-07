@@ -4,6 +4,7 @@ import { motion } from 'motion/react';
 import { CASE_STUDIES } from '../constants';
 import { ArrowLeftIcon } from '../components/icons/ArrowLeftIcon';
 import MetricCard from '../components/MetricCard';
+import SEO from '../components/SEO';
 
 const CaseStudyPage: React.FC = () => {
   const { slug } = useParams<{ slug: string }>();
@@ -30,7 +31,16 @@ const CaseStudyPage: React.FC = () => {
   const mediaSource = hasVideo ? caseStudy.heroVideo : caseStudy.heroImage;
 
   return (
-    <div>
+    <>
+      <SEO
+        title={`${caseStudy.title} - Case Study by Tyler Vickers`}
+        description={caseStudy.overview}
+        url={`https://tyvick.com/case-study/${caseStudy.slug}`}
+        image={caseStudy.heroImage}
+        type="article"
+        keywords={['Product Management Case Study', caseStudy.company, ...caseStudy.tags]}
+      />
+      <div>
       {/* Hero Section */}
       <div className="relative h-96 bg-slate-950 overflow-hidden">
         {hasVideo ? (
@@ -183,6 +193,7 @@ const CaseStudyPage: React.FC = () => {
         </div>
       </div>
     </div>
+    </>
   );
 };
 
