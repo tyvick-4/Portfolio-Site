@@ -52,7 +52,7 @@ export const CASE_STUDIES: CaseStudy[] = [
       "Designed a creator-facing tool allowing streamers to select up to 5 'Featured Clips' that would appear prominently on their channel page. Prioritized simplicity—creators could feature clips in under 30 seconds.",
       "Partnered with the recommendations team to integrate Featured Clips into discovery surfaces beyond channel pages, including the Twitch homepage and game directory pages, multiplying the feature's reach.",
       "Navigated legacy infrastructure constraints by working with engineering to build a scalable clips metadata layer, avoiding a costly full-platform rebuild while unblocking future clips innovation.",
-      "Ensured that our feedback loop of new clips distribution appeared on our native mobile apps in a new content row, on the web client on both desktop and mobile web, and across channel pages with new rows in partnership with Viewer Experience product and design partners.
+      "Ensured that our feedback loop of new clips distribution appeared on our native mobile apps in a new content row, on the web client on both desktop and mobile web, and across channel pages with new rows in partnership with Viewer Experience product and design partners.",
     ],
     challenges: [
       "Infrastructure risk: The clips system was built 6 years earlier and couldn't handle new metadata without risking platform stability. Solution: Worked with engineering to design a parallel metadata layer that could scale independently, buying time for future infrastructure investment.",
