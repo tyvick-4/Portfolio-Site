@@ -1,13 +1,7 @@
-/* Modern Font Stack - Option 1: Inter + DM Serif Display */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=DM+Serif+Display:ital@0;1&display=swap');
+/* Tailwind CSS v4 */
+@import "tailwindcss";
 
-/* Alternative Font Stack - Option 2: Outfit + Fraunces (commented out)
-@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,400&display=swap');
-*/
-
-/* Alternative Font Stack - Option 3: Work Sans + Playfair Display (commented out)
-@import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap');
-*/
+/* Fonts are now loaded via <link> in index.html for non-blocking performance */
 
 :root {
   /* Color Palette - Amber Glow */
