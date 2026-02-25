@@ -1,10 +1,10 @@
 import React, { useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { motion } from 'motion/react';
-import { CASE_STUDIES } from '../constants';
+import { CASE_STUDIES, PERSONAL_INFO } from '../constants';
 import { ArrowLeftIcon } from '../components/icons/ArrowLeftIcon';
 import MetricCard from '../components/MetricCard';
-import SEO from '../components/SEO';
+import SEO, { getPersonSchema, getWebSiteSchema, getBreadcrumbSchema } from '../components/SEO';
 
 const CaseStudyPage: React.FC = () => {
   const { slug } = useParams<{ slug: string }>();
@@ -39,6 +39,35 @@ const CaseStudyPage: React.FC = () => {
         image={caseStudy.heroImage}
         type="article"
         keywords={['Product Management Case Study', caseStudy.company, ...caseStudy.tags]}
+        structuredData={[
+          {
+            '@type': 'Article',
+            headline: caseStudy.title,
+            description: caseStudy.overview,
+            image: `https://tyvick.com${caseStudy.heroImage}`,
+            url: `https://tyvick.com/case-study/${caseStudy.slug}`,
+            author: { '@id': 'https://tyvick.com/#person' },
+            publisher: {
+              '@type': 'Person',
+              name: PERSONAL_INFO.name,
+              url: 'https://tyvick.com',
+            },
+            mainEntityOfPage: `https://tyvick.com/case-study/${caseStudy.slug}`,
+            keywords: [caseStudy.company, ...caseStudy.tags],
+            about: {
+              '@type': 'Thing',
+              name: `${caseStudy.title} at ${caseStudy.company}`,
+              description: caseStudy.subtitle,
+            },
+          },
+          getPersonSchema(),
+          getWebSiteSchema(),
+          getBreadcrumbSchema([
+            { name: 'Home', url: 'https://tyvick.com/' },
+            { name: 'Case Studies', url: 'https://tyvick.com/#work' },
+            { name: caseStudy.title, url: `https://tyvick.com/case-study/${caseStudy.slug}` },
+          ]),
+        ]}
       />
       <div>
       {/* Hero Section */}

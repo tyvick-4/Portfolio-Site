@@ -3,12 +3,29 @@ import { Link } from 'react-router-dom';
 import { motion } from 'motion/react';
 import { PERSONAL_INFO, CAREER_HIGHLIGHTS, CASE_STUDIES } from '../constants';
 import MetricCard from '../components/MetricCard';
-import SEO from '../components/SEO';
+import SEO, { getPersonSchema, getWebSiteSchema } from '../components/SEO';
 
 const HomePage: React.FC = () => {
   return (
     <>
-      <SEO />
+      <SEO
+        structuredData={[
+          getPersonSchema(),
+          getWebSiteSchema(),
+          {
+            '@type': 'ItemList',
+            name: 'Featured Case Studies',
+            description: 'Product management case studies by Tyler Vickers',
+            itemListElement: CASE_STUDIES.map((study, index) => ({
+              '@type': 'ListItem',
+              position: index + 1,
+              url: `https://tyvick.com/case-study/${study.slug}`,
+              name: study.title,
+              description: study.subtitle,
+            })),
+          },
+        ]}
+      />
       <div className="container mx-auto px-6 py-12">
       {/* Hero Section */}
       <section className="relative min-h-screen flex items-center bg-gradient-to-br from-[#0a0a0a] via-[#1a1410] to-[#0a0a0a]">

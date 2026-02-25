@@ -1,6 +1,9 @@
 import React, { useEffect } from 'react';
 import { PERSONAL_INFO } from '../constants';
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+type SchemaObject = Record<string, any>;
+
 interface SEOProps {
   title?: string;
   description?: string;
@@ -8,7 +11,57 @@ interface SEOProps {
   type?: 'website' | 'article' | 'profile';
   url?: string;
   keywords?: string[];
+  structuredData?: SchemaObject[];
 }
+
+/** Reusable Person schema for use across pages */
+export const getPersonSchema = (url = 'https://tyvick.com'): SchemaObject => ({
+  '@type': 'Person',
+  '@id': 'https://tyvick.com/#person',
+  name: PERSONAL_INFO.name,
+  url,
+  image: `https://tyvick.com${PERSONAL_INFO.headshot}`,
+  description: PERSONAL_INFO.valueProp,
+  jobTitle: PERSONAL_INFO.title,
+  email: PERSONAL_INFO.email,
+  sameAs: [PERSONAL_INFO.linkedin],
+  alumniOf: [
+    { '@type': 'Organization', name: 'Amazon' },
+    { '@type': 'Organization', name: 'Twitch' },
+  ],
+  knowsAbout: [
+    'Product Management',
+    'Growth Strategy',
+    'Customer Lifecycle',
+    'Video Streaming',
+    'Creator Economy',
+    'Data Analysis',
+    'Cross-functional Leadership',
+  ],
+});
+
+/** Reusable WebSite schema */
+export const getWebSiteSchema = (): SchemaObject => ({
+  '@type': 'WebSite',
+  '@id': 'https://tyvick.com/#website',
+  url: 'https://tyvick.com',
+  name: `${PERSONAL_INFO.name} - Portfolio`,
+  description: PERSONAL_INFO.valueProp,
+  publisher: { '@id': 'https://tyvick.com/#person' },
+});
+
+/** Helper to build a BreadcrumbList schema */
+export const getBreadcrumbSchema = (
+  items: { name: string; url: string }[]
+): SchemaObject => ({
+  '@type': 'BreadcrumbList',
+  itemListElement: items.map((item, index) => ({
+    '@type': 'ListItem',
+    position: index + 1,
+    name: item.name,
+    item: item.url,
+  })),
+});
 
 const SEO: React.FC<SEOProps> = ({
   title = `${PERSONAL_INFO.name} - ${PERSONAL_INFO.title}`,
@@ -27,10 +80,11 @@ const SEO: React.FC<SEOProps> = ({
     'Growth Product Manager',
     'Tyler Vickers',
   ],
+  structuredData,
 }) => {
   useEffect(() => {
     const fullUrl = url;
-    const fullImageUrl = image.startsWith('http') ? image : `${url}${image}`;
+    const fullImageUrl = image.startsWith('http') ? image : `https://tyvick.com${image}`;
 
     // Update document title
     document.title = title;
@@ -78,36 +132,15 @@ const SEO: React.FC<SEOProps> = ({
     }
     canonical.href = fullUrl;
 
-    // Structured Data - Person Schema
-    const personSchema = {
+    // Structured Data — use @graph when page provides schemas, else fall back to Person + WebSite
+    const schemas: SchemaObject[] = structuredData ?? [
+      getPersonSchema(fullUrl),
+      getWebSiteSchema(),
+    ];
+
+    const graphPayload = {
       '@context': 'https://schema.org',
-      '@type': 'Person',
-      name: PERSONAL_INFO.name,
-      url: fullUrl,
-      image: fullImageUrl,
-      description: description,
-      jobTitle: PERSONAL_INFO.title,
-      email: PERSONAL_INFO.email,
-      sameAs: [PERSONAL_INFO.linkedin],
-      alumniOf: [
-        {
-          '@type': 'Organization',
-          name: 'Amazon',
-        },
-        {
-          '@type': 'Organization',
-          name: 'Twitch',
-        },
-      ],
-      knowsAbout: [
-        'Product Management',
-        'Growth Strategy',
-        'Customer Lifecycle',
-        'Video Streaming',
-        'Creator Economy',
-        'Data Analysis',
-        'Cross-functional Leadership',
-      ],
+      '@graph': schemas,
     };
 
     // Add or update JSON-LD script
@@ -117,8 +150,8 @@ const SEO: React.FC<SEOProps> = ({
       jsonLdScript.type = 'application/ld+json';
       document.head.appendChild(jsonLdScript);
     }
-    jsonLdScript.textContent = JSON.stringify(personSchema);
-  }, [title, description, image, type, url, keywords]);
+    jsonLdScript.textContent = JSON.stringify(graphPayload);
+  }, [title, description, image, type, url, keywords, structuredData]);
 
   return null;
 };

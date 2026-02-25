@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion } from 'motion/react';
 import { PERSONAL_INFO, SKILL_CATEGORIES } from '../constants';
-import SEO from '../components/SEO';
+import SEO, { getPersonSchema, getWebSiteSchema, getBreadcrumbSchema } from '../components/SEO';
 
 const AboutPage: React.FC = () => {
   return (
@@ -10,6 +10,15 @@ const AboutPage: React.FC = () => {
         title={`About ${PERSONAL_INFO.name} - ${PERSONAL_INFO.title}`}
         description={`Learn more about ${PERSONAL_INFO.name}, a Senior Product Manager with experience at Twitch and Amazon Fire TV. Skills in growth strategy, customer lifecycle, and cross-functional leadership.`}
         url="https://tyvick.com/about"
+        type="profile"
+        structuredData={[
+          getPersonSchema('https://tyvick.com/about'),
+          getWebSiteSchema(),
+          getBreadcrumbSchema([
+            { name: 'Home', url: 'https://tyvick.com/' },
+            { name: 'About', url: 'https://tyvick.com/about' },
+          ]),
+        ]}
       />
       <div className="container mx-auto px-6 py-16">
       <motion.div 

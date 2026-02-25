@@ -3,7 +3,7 @@ import { motion } from 'motion/react';
 import { PERSONAL_INFO } from '../constants';
 import LinkedInIcon from '../components/icons/LinkedInIcon';
 import MailIcon from '../components/icons/MailIcon';
-import SEO from '../components/SEO';
+import SEO, { getPersonSchema, getWebSiteSchema, getBreadcrumbSchema } from '../components/SEO';
 
 const ContactPage: React.FC = () => {
   const [formData, setFormData] = useState({
@@ -32,6 +32,23 @@ const ContactPage: React.FC = () => {
         title={`Contact ${PERSONAL_INFO.name} - Get in Touch`}
         description={`Reach out to ${PERSONAL_INFO.name} for product management opportunities, collaborations, or inquiries. Connect via LinkedIn or email.`}
         url="https://tyvick.com/contact"
+        structuredData={[
+          {
+            '@type': 'WebPage',
+            '@id': 'https://tyvick.com/contact',
+            name: `Contact ${PERSONAL_INFO.name}`,
+            description: `Reach out to ${PERSONAL_INFO.name} for product management opportunities, collaborations, or inquiries.`,
+            url: 'https://tyvick.com/contact',
+            isPartOf: { '@id': 'https://tyvick.com/#website' },
+            about: { '@id': 'https://tyvick.com/#person' },
+          },
+          getPersonSchema(),
+          getWebSiteSchema(),
+          getBreadcrumbSchema([
+            { name: 'Home', url: 'https://tyvick.com/' },
+            { name: 'Contact', url: 'https://tyvick.com/contact' },
+          ]),
+        ]}
       />
       <div className="container mx-auto px-6 py-16">
       <motion.div 
