@@ -1,0 +1,62 @@
+# Discord Server Discovery Personalization Prototype - Implementation Plan
+
+## Goal Description
+Build a high-fidelity prototype of Discord's Server Discovery page to demonstrate the business value of personalization and SEO structured data. The prototype will be a React web app featuring a side-by-side comparison of a generic discovery experience versus a personalized one, along with a standalone tab for an SEO structured data demonstration.
+
+## User Review Required
+No immediate user review required, but I will prompt the user to approve the plan before proceeding with execution.
+
+## Proposed Changes
+
+### Project Foundation
+- Initialize a new React project using Vite in the `discord-server-discovery-prototype` directory.
+- Create `src/styles/tokens.css` to define the Discord dark mode color palette, typography (DM Sans), and spacing.
+
+### Data Layer
+#### [NEW] src/mockData.js
+- Defines the `mockUser` profile representing a dormant user.
+- Defines ~12-16 `server` objects across various categories with relevant personalization signals (e.g., `friendsInServer`, `matchScore`, `personalizedReason`).
+
+### UI Components
+#### [NEW] src/components/ReasonChip.jsx
+- Renders the small pill above the server name mapping to personalization signals (Returning, Friends, Interests, Trending, New).
+#### [NEW] src/components/ServerCard.jsx
+- The core server card component with hover lift effect, server icon, join button, and optional ReasonChip.
+#### [NEW] src/components/CategorySidebar.jsx
+- Sidebar containing category filters mimicking Discord's categories.
+#### [NEW] src/components/PanelHeader.jsx
+- Sticky top bar for the Discovery panels showing the panel label and metric summary.
+#### [NEW] src/components/PMNotesPanel.jsx
+- Collapsible sidebar for Growth and SEO hypotheses.
+#### [NEW] src/components/ServerModal.jsx
+- Modal overlay simulating the Discord server preview.
+
+### SEO Components
+#### [NEW] src/components/JsonLdBlock.jsx
+- Component to display syntax-highlighted JSON-LD structured data.
+#### [NEW] src/components/SerpPreview.jsx
+- Component to simulate a Google Rich Result SERP preview.
+#### [NEW] src/components/StructuredDataDemo.jsx
+- Standalone view comparing the current Discord `<head>` without schema vs. the proposed state with `Organization` and `DiscussionForumPosting` schema.
+
+### Main Layout
+#### [NEW] src/ServerDiscoveryPrototype.jsx
+- The hero two-panel layout comparing "Discovery Today" and "With Personalization".
+#### [MODIFY] src/App.jsx
+- Wires up the tabs/toggles for switching between the main side-by-side demo and the SEO layer.
+#### [MODIFY] index.html
+- Import `DM Sans` from Google Fonts.
+
+### Documentation
+#### [NEW] FIGMA_SPEC.md
+- Document component inventory, color/text styles, spacing, and prototype flow notes as requested.
+#### [NEW] README.md
+- Setup instructions and demo script.
+
+## Verification Plan
+### Automated Verification
+- Run the React dev server locally to ensure all components render without errors.
+### Manual Verification
+- Review the side-by-side layout to confirm visual indistinguishability from Discord's UI.
+- Verify that the SEO layer accurately highlights JSON-LD and renders the SERP preview pixel-accurately.
+- Confirm that the UI animations (e.g., stagger-in and hover lift) function smoothly.

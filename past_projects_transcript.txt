@@ -1,0 +1,31 @@
+Interviewer
+Tell me about your past projects. Pick 1–2 that are most relevant to a Product Manager role, and walk me through them using Situation, Task, Actions you took, and the Results. For each project, please cover: - What problem/customer need you were solving - Your role and scope (team size, stakeholders) - How you decided what to build (research/data, prioritization) - Tradeoffs you made and why - Measurable outcomes (metrics, impact) - What you’d do differently now
+
+You
+Great, yeah, so the...
+You
+past role that is most relevant to this current role that I'm pretending to interview for, which is a Discord position for growth and SEO, is around my work at Twitch working on VOD, Video On Demand, and clips. I managed three different teams across engineering and product, and...
+
+You
+My role was to help creators grow through better clip discovery and clip management.
+You
+One of the features that we decided we wanted to build was helping creators feature their very best clips, whether they're created by themselves or by members of their community. Clips were a way that creators continually told us through UXR that that was how they grew, by having their clips be discovered and then having viewers off-site start to
+You
+Follow their channel as a result of seeing a fun clip on Reddit and other places. The problem we needed to solve was it was too hard to find those great clips on Twitch itself, because they were buried on creator channel pages. So I developed a feature called featured clips that would allow creators to very quickly and easily with the click of a star button, click a clip as featured in there.
+You
+in their clip inventory and make it so that that clip was eligible for deeper discovery, both across different places on the Twitch homepage, on game browse pages, as well as being really prominent on their channel page. They're about 50% of viewers when they come to a channel page on Twitch.
+You
+see an offline channel page and they can't get a sense of who this creator is and why they might be willing to watch them. Featured clips allows that their best clips to show up there. Creators have full control over what those clips show up and which ones are the most important ones to them. And then viewers can also get a better sense and orient to whether or not they'd be willing to follow that creator faster. I took the action to determine that, you know, how many different clips were created every day. I worked with data science and other product managers to understand where those clips can and should show up relative to our broader viewer discovery efforts. And I worked with our designers to develop the mechanism for featuring clips in the VOD and clip.
+You
+management area of Twitch, and the goal that we had was to make sure that there was a good feedback loop of creators featuring those clips and having the proper creator analytics to show that by featuring a clip, they were being discovered in more places and that viewers were seeing that clip and watching it at higher rates than their unfeatured clips. We launched this before TwitchCon in 2022, or sorry, 2023, and we were specifically measuring whether or not this would lead to incremental clip viewing, so number of daily visiting viewers watching clips per day and whether it led to a higher rate of clip referred follows, meaning that viewers who saw a featured clip in those discovery spaces were more likely to follow the creator themselves. As a result, we also had an adoption target of 25% or more active creators utilizing featured clips, and
+You
+The
+You
+А...
+You
+And after launch, not too long after TwitchCon, we saw that there, we hit about 35% of active creators utilizing featured clips. We made some additional fast follow changes afterward to make it easier for creators who primarily create clips themselves to automatically feature clips as soon as they created them. And we saw over 45% of active creators utilizing featured clips one month post-launch, which is above our targets. This full effort led to about 1.2 million incremental daily clip views. So across all the different apps and clients, we launched this feature to make sure the featured clips appeared not only on the desktop web surface where the majority of Twitch viewers were, but also on our iOS and Android apps. And that really had an impact on driving a broader and better on-site discovery of clips and a richer clip ecosystem. We also saw that we had initial signals that featured clips were leading to this incremental clip viewing increase and that featured clips were more effective in driving
+You
+Follows then on featured clips, particularly in places on when a clip was featured on the Twitch home page, and we had additional fast follows to build up more mechanisms for integrating featured clips into discovery feed that Twitch launched in 2023, which is more of a TikTok-style vertical app discovery that was a very large change in our architecture on Twitch and for our overall customer experience, and creators themselves gave a lot of great positive feedback that featured clips were helping them be discovered, that they were seeing the impact of all of a sudden their clips getting 10, 20%, or sorry, 10 to 20 times more views than they did previously for featured clips. So that is one of the things that I think is most relevant to this Discord, SEO, and growth position, because I understand how to build out an ecosystem of growth and features that create a full feedback loop that is important not only for people, creators, and admins for a space and a community, but also to help other community members find things that are interesting to them faster.
+You
+
+
