@@ -50,40 +50,56 @@ const SectionHeader = ({ icon: Icon, title }) => (
 
 const AhrefsPlaceholder = () => (
   <div style={{
-    border: '1px solid #5865F2',
+    border: '1px solid rgba(88,101,242,0.4)',
     borderRadius: '10px',
     padding: '28px 24px',
     display: 'flex',
     flexDirection: 'column',
-    alignItems: 'center',
-    gap: '12px',
-    textAlign: 'center',
+    gap: '16px',
     background: 'linear-gradient(135deg, rgba(88,101,242,0.08) 0%, rgba(88,101,242,0.03) 100%)',
   }}>
-    <div style={{
-      width: '44px',
-      height: '44px',
-      borderRadius: '10px',
-      backgroundColor: 'rgba(88,101,242,0.15)',
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'center',
-    }}>
-      <Search size={20} style={{ color: '#5865F2' }} />
-    </div>
-    <div>
-      <div style={{ fontSize: '14px', fontWeight: '700', color: '#F2F3F5', marginBottom: '6px' }}>
-        Ahrefs Data Not Connected
+    <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+      <div style={{
+        width: '40px', height: '40px', borderRadius: '10px', flexShrink: 0,
+        backgroundColor: 'rgba(88,101,242,0.15)',
+        display: 'flex', alignItems: 'center', justifyContent: 'center',
+      }}>
+        <Search size={18} style={{ color: '#5865F2' }} />
       </div>
-      <div style={{ fontSize: '13px', color: '#80848E', lineHeight: '1.6', maxWidth: '380px' }}>
-        Connect the Ahrefs API to populate this panel with live organic keyword data for{' '}
-        <span style={{ color: '#5865F2', fontWeight: '500' }}>discord.com/servers</span> —
-        including top ranking keywords, monthly search volumes, and domain authority signals.
+      <div>
+        <div style={{ fontSize: '14px', fontWeight: '700', color: '#F2F3F5', marginBottom: '2px' }}>
+          Organic Search — Your Untapped Referrer
+        </div>
+        <div style={{ fontSize: '12px', color: '#80848E' }}>
+          SEO data not connected · See how to unlock this below
+        </div>
       </div>
     </div>
+
+    <div style={{ fontSize: '13px', color: '#80848E', lineHeight: '1.7' }}>
+      When your invite link is shared on content that ranks in Google — a Reddit thread,
+      YouTube video description, or a blog post — those clicks appear as referrals in your
+      Insights <strong style={{ color: '#B5BAC1' }}>Most Popular Referrers</strong> table.
+      As this data shows, those referrals consistently deliver 3–4× better 1-week retention
+      than Server Discovery joins. Connect Ahrefs to see which search terms are already
+      driving organic traffic to pages that link to your server.
+    </div>
+
+    <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+      {[
+        { icon: '🔎', text: 'Which Google keywords send members to your server via Reddit or YouTube' },
+        { icon: '📈', text: 'Which external pages rank for your community\'s topics and link to you' },
+        { icon: '⚡', text: 'Where to create or contribute content to grow your organic referral channel' },
+      ].map(({ icon, text }) => (
+        <div key={text} style={{ display: 'flex', gap: '10px', alignItems: 'flex-start' }}>
+          <span style={{ fontSize: '14px', flexShrink: 0, marginTop: '1px' }}>{icon}</span>
+          <span style={{ fontSize: '12px', color: '#80848E', lineHeight: '1.5' }}>{text}</span>
+        </div>
+      ))}
+    </div>
+
     <div style={{
-      marginTop: '4px',
-      padding: '8px 16px',
+      padding: '8px 14px',
       backgroundColor: 'rgba(88,101,242,0.12)',
       borderRadius: '6px',
       fontSize: '12px',
@@ -128,7 +144,7 @@ const AhrefsPopulated = ({ data, discoveryRetention }) => {
 
       {/* Section 1: Top Keywords */}
       <div>
-        <SectionHeader icon={Search} title="Top Server Discovery Keywords" />
+        <SectionHeader icon={Search} title="Keywords Driving Organic Referrals to Your Server" />
         <div style={{
           backgroundColor: '#1E1F22',
           borderRadius: '8px',
@@ -183,26 +199,27 @@ const AhrefsPopulated = ({ data, discoveryRetention }) => {
         </div>
       </div>
 
-      {/* Section 2: Discovery Traffic Quality Gap narrative */}
+      {/* Section 2: Organic vs Discovery quality gap narrative */}
       <div>
-        <SectionHeader icon={TrendingUp} title="Discovery Traffic Quality Gap" />
+        <SectionHeader icon={TrendingUp} title="Why Organic Referrers Beat Server Discovery" />
         <div style={{
-          backgroundColor: 'rgba(120,53,15,0.25)',
-          border: '1px solid rgba(245,158,11,0.3)',
+          backgroundColor: 'rgba(87,242,135,0.06)',
+          border: '1px solid rgba(87,242,135,0.2)',
           borderRadius: '8px',
           padding: '16px 18px',
           fontSize: '13px',
           lineHeight: '1.7',
           color: '#B5BAC1',
         }}>
-          The keyword{' '}
-          <strong style={{ color: '#F2F3F5' }}>"{narrativeKeyword}"</strong>{' '}
-          drives ~<strong style={{ color: '#FEE75C' }}>{narrativeVolume}</strong> monthly
-          searches to <code style={{ color: '#5865F2', fontSize: '12px' }}>discord.com/servers</code> —
-          but Server Discovery members convert at only{' '}
-          <strong style={{ color: '#ED4245' }}>{discoveryRetention}% D7 retention</strong>.
-          External content ranking for these terms pre-qualifies users before arrival,
-          producing 3–4× higher engagement per join than discovery browse.
+          The keyword <strong style={{ color: '#F2F3F5' }}>"{narrativeKeyword}"</strong>{' '}
+          attracts ~<strong style={{ color: '#57F287' }}>{narrativeVolume}</strong> searches per month
+          from people already interested in this topic. When they find an external page
+          containing your invite link, they arrive with intent — not just browsing.
+          That's why these referrals show{' '}
+          <strong style={{ color: '#57F287' }}>3–4× higher 1-week retention</strong> compared
+          to Server Discovery's <strong style={{ color: '#ED4245' }}>{discoveryRetention}%</strong>.
+          In your Insights <strong style={{ color: '#B5BAC1' }}>Most Popular Referrers</strong> table,
+          these organic sources will stand out as your highest-quality acquisition channel.
         </div>
       </div>
 
@@ -268,7 +285,7 @@ const AhrefsPanel = ({ data = null, discoveryRetention = 22 }) => {
             textTransform: 'uppercase',
             letterSpacing: '0.08em',
           }}>
-            Ahrefs SEO Intelligence
+            Organic Search Intelligence
           </div>
           <span style={{
             fontSize: '10px',

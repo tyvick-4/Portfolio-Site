@@ -1,5 +1,5 @@
 import React, { useState, useMemo } from 'react';
-import { TrendingUp, TrendingDown, Minus, ChevronRight, Users } from 'lucide-react';
+import { TrendingUp, TrendingDown, Minus, ChevronRight, Users, BarChart2, Globe } from 'lucide-react';
 import ViewToggle from './ViewToggle';
 import InsightCallout from './InsightCallout';
 import AhrefsPanel from './AhrefsPanel';
@@ -99,7 +99,7 @@ const ServerInsightsReferralQuality = ({
         <nav style={{ display: 'flex', alignItems: 'center', gap: '6px', fontSize: '13px', color: '#80848E' }}>
           <span>Server Insights</span>
           <ChevronRight size={13} />
-          <span>Traffic Sources</span>
+          <span>Growth &amp; Activation</span>
           <ChevronRight size={13} />
           <span style={{ color: '#5865F2', fontWeight: '600' }}>Referral Quality</span>
         </nav>
@@ -109,9 +109,13 @@ const ServerInsightsReferralQuality = ({
           <div>
             <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '6px' }}>
               <h1 style={{ fontSize: '22px', fontWeight: '700', margin: 0 }}>
-                Referral Quality Intelligence
+                Referral Quality
               </h1>
             </div>
+            <p style={{ margin: '0 0 10px', fontSize: '13px', color: '#80848E', lineHeight: '1.5', maxWidth: '480px' }}>
+              Which invite sources bring members who actually stick around and participate?
+              Extends your <span style={{ color: '#B5BAC1', fontWeight: '500' }}>Growth &amp; Activation</span> data with retention and communicator metrics per source.
+            </p>
             {/* Server badge */}
             <div style={{
               display: 'inline-flex',
@@ -145,11 +149,62 @@ const ServerInsightsReferralQuality = ({
           <ViewToggle view={view} onChange={setView} />
         </div>
 
+        {/* ── Admin context banner ── */}
+        <div style={{
+          backgroundColor: '#2B2D31',
+          border: '1px solid rgba(88,101,242,0.25)',
+          borderRadius: '10px',
+          padding: '16px 20px',
+          display: 'flex',
+          gap: '24px',
+          flexWrap: 'wrap',
+          alignItems: 'flex-start',
+        }}>
+          <div style={{ display: 'flex', gap: '12px', flex: '1', minWidth: '260px' }}>
+            <div style={{
+              width: '32px', height: '32px', borderRadius: '8px', flexShrink: 0,
+              backgroundColor: 'rgba(88,101,242,0.15)',
+              display: 'flex', alignItems: 'center', justifyContent: 'center',
+            }}>
+              <BarChart2 size={15} style={{ color: '#5865F2' }} />
+            </div>
+            <div>
+              <div style={{ fontSize: '12px', fontWeight: '700', color: '#F2F3F5', marginBottom: '3px' }}>
+                Growth &amp; Activation — extended view
+              </div>
+              <div style={{ fontSize: '12px', color: '#80848E', lineHeight: '1.55' }}>
+                Your Insights dashboard already shows new member joins by source.
+                This view adds <strong style={{ color: '#B5BAC1' }}>1-week retention</strong> and <strong style={{ color: '#B5BAC1' }}>communicator rate</strong> per source
+                — so you can see which channels bring members who come back and actually talk.
+              </div>
+            </div>
+          </div>
+          <div style={{ display: 'flex', gap: '12px', flex: '1', minWidth: '260px' }}>
+            <div style={{
+              width: '32px', height: '32px', borderRadius: '8px', flexShrink: 0,
+              backgroundColor: 'rgba(87,242,135,0.1)',
+              display: 'flex', alignItems: 'center', justifyContent: 'center',
+            }}>
+              <Globe size={15} style={{ color: '#57F287' }} />
+            </div>
+            <div>
+              <div style={{ fontSize: '12px', fontWeight: '700', color: '#F2F3F5', marginBottom: '3px' }}>
+                Most Popular Referrers — what's driving quality
+              </div>
+              <div style={{ fontSize: '12px', color: '#80848E', lineHeight: '1.55' }}>
+                When your invite link is shared on indexed content — Reddit threads, YouTube
+                descriptions, blog posts — those joins appear as <strong style={{ color: '#B5BAC1' }}>organic referrals</strong> in Insights.
+                These referrers consistently outperform Server Discovery for long-term retention.
+              </div>
+            </div>
+          </div>
+        </div>
+
         {/* ── Summary chips ── */}
         <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
           {[
-            { label: 'Total Joins (30d)', value: totalJoins.toLocaleString() },
-            { label: 'Avg 7-Day Retention', value: `${Math.round(trafficSources.reduce((s, r) => s + r.retention7d * r.joins30d, 0) / totalJoins)}%` },
+            { label: 'New Members (30d)', value: totalJoins.toLocaleString() },
+            { label: 'Avg 1-Week Retention', value: `${Math.round(trafficSources.reduce((s, r) => s + r.retention7d * r.joins30d, 0) / totalJoins)}%` },
             { label: 'Sources Tracked', value: trafficSources.length },
           ].map(({ label, value }) => (
             <div key={label} style={{
@@ -170,15 +225,15 @@ const ServerInsightsReferralQuality = ({
           <table style={{ width: '100%', borderCollapse: 'collapse' }}>
             <thead>
               <tr>
-                <ColHeader>Source</ColHeader>
-                <ColHeader align="right">Joins (30d)</ColHeader>
+                <ColHeader>Invite Source</ColHeader>
+                <ColHeader align="right">New Members (30d)</ColHeader>
                 {view === 'volume' && (
-                  <ColHeader align="right">Volume Share</ColHeader>
+                  <ColHeader align="right">Share of Joins</ColHeader>
                 )}
                 {view === 'quality' && (
                   <>
-                    <ColHeader align="right">7-Day Retention</ColHeader>
-                    <ColHeader align="right">Avg Msgs / Member</ColHeader>
+                    <ColHeader align="right">1-Week Retention</ColHeader>
+                    <ColHeader align="right">Communicators (Avg Msgs)</ColHeader>
                     <ColHeader align="right">Friends-Driven</ColHeader>
                     <ColHeader align="right">Quality Score</ColHeader>
                   </>
@@ -286,13 +341,20 @@ const ServerInsightsReferralQuality = ({
           </table>
         </div>
 
-        {/* ── Insight Callout (Quality view only) ── */}
+        {/* ── Insight Callouts (Quality view only) ── */}
         {view === 'quality' && (
-          <InsightCallout
-            variant="warning"
-            title="Discovery Paradox Detected"
-            body="Server Discovery drives 3,100 joins — your highest-volume source. But at 22% 7-day retention and 2.1 avg messages per member, it produces the lowest-quality members. YouTube referrals (83% retention) generate 3.8× more engaged members per join. External content pre-qualifies users before they arrive."
-          />
+          <>
+            <InsightCallout
+              variant="warning"
+              title="The Discovery Paradox — Your Biggest Source Is Your Weakest"
+              body="Server Discovery drives 3,100 new members — your top source by volume. But at 22% 1-week retention and 2.1 avg messages per member, it sits far below Discord's benchmark of 30% communicator rate for a healthy server. Meanwhile YouTube referrals retain at 83% — members who arrive from specific content come already invested, not just browsing."
+            />
+            <InsightCallout
+              variant="tip"
+              title="Organic Search Referrals Outperform on Every Quality Signal"
+              body="When a Reddit thread, YouTube video description, or blog post containing your invite link ranks in Google search, those clicks appear in your Most Popular Referrers as organic referrals. This data shows they retain 3–4× better than Server Discovery joins. Growing your footprint on indexed content is the highest-leverage path to improving your activation and retention numbers in Insights."
+            />
+          </>
         )}
 
         {/* ── Ahrefs Panel ── */}
@@ -304,9 +366,10 @@ const ServerInsightsReferralQuality = ({
         </div>
 
         {/* ── Footer ── */}
-        <div style={{ fontSize: '12px', color: '#80848E', textAlign: 'center', paddingBottom: '16px' }}>
-          Data window: last 30 days · Quality Score = composite of D7 retention, avg messages/member, and friends-driven % ·{' '}
-          <span style={{ color: '#5865F2' }}>Server Insights beta</span>
+        <div style={{ fontSize: '12px', color: '#80848E', textAlign: 'center', paddingBottom: '16px', lineHeight: '1.7' }}>
+          Data window: last 30 days · Available to Community Servers with 500+ members ·{' '}
+          Quality Score = composite of 1-week retention, communicator rate (avg messages/member), and friends-driven % ·{' '}
+          <span style={{ color: '#5865F2' }}>Server Insights</span>
         </div>
 
       </div>
