@@ -156,6 +156,36 @@ const PMNotesPanel = () => {
                     </ul>
                 </NoteSection>
 
+                <NoteSection title="AI OVERVIEW NORTH STAR (2026)">
+                    <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+                        <div style={{ fontSize: '12px', color: 'var(--text-secondary)', lineHeight: '1.5' }}>
+                            New primary metric: <strong style={{ color: 'var(--text-primary)' }}>% of relevant AI Overview queries where Discord community is cited</strong> — replaces simple keyword ranking.
+                        </div>
+                        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginTop: '4px' }}>
+                            <span style={{ color: '#FF4500', fontWeight: '600' }}>Reddit</span>
+                            <span style={{ fontWeight: '700', color: 'var(--accent-green)' }}>21% of all AIOs</span>
+                        </div>
+                        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                            <span style={{ color: 'var(--accent-blurple)', fontWeight: '600' }}>Discord</span>
+                            <span style={{ fontWeight: '700', color: 'var(--accent-red)' }}>0%</span>
+                        </div>
+                    </div>
+                </NoteSection>
+
+                <NoteSection title="FAN-OUT QUERY STRATEGY">
+                    AI search (Perplexity, Google AIO, SearchGPT) decomposes a single prompt into <strong style={{ color: 'var(--text-primary)' }}>5–28 sub-queries simultaneously</strong>. Pages appearing across multiple sub-queries get cited via reciprocal rank fusion scoring. A Forum Channel naturally covers all sub-queries — no content manufacturing needed.
+                </NoteSection>
+
+                <NoteSection title="TOPIC HUB vs. KEYWORD PAGES">
+                    <ul style={{ paddingLeft: '16px', margin: 0 }}>
+                        <li><strong style={{ color: 'var(--accent-green)' }}>1 Forum Channel</strong>: 2,500+ keywords + 473 AI Overview appearances</li>
+                        <li><strong style={{ color: 'var(--accent-red)' }}>60 keyword pages</strong>: 266 keywords combined, ~0 AIO appearances</li>
+                        <li style={{ fontSize: '11px', color: 'var(--text-muted)', marginTop: '4px' }}>Source: Ahrefs Healthline, Mar 2026</li>
+                    </ul>
+                </NoteSection>
+
+                <div style={{ height: '1px', backgroundColor: 'var(--border-subtle)', margin: '24px 0' }} />
+
                 <NoteSection title="STRUCTURED DATA HYPOTHESIS">
                     DiscussionForumPosting schema on public server pages would make Discord content eligible for Google's Discussions & Forums rich results — currently dominated by Reddit.
                 </NoteSection>

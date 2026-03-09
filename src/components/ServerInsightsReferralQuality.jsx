@@ -3,6 +3,7 @@ import { TrendingUp, TrendingDown, Minus, ChevronRight, Users, BarChart2, Globe 
 import ViewToggle from './ViewToggle';
 import InsightCallout from './InsightCallout';
 import AhrefsPanel from './AhrefsPanel';
+import AIOverviewOpportunity from './AIOverviewOpportunity';
 import QualityBadge from './QualityBadge';
 
 // ─── Helpers ────────────────────────────────────────────────────────────────
@@ -363,6 +364,11 @@ const ServerInsightsReferralQuality = ({
             data={ahrefsData}
             discoveryRetention={discoveryRow?.retention7d ?? 22}
           />
+        </div>
+
+        {/* ── AI Overview Opportunity Panel ── */}
+        <div style={{ backgroundColor: '#2B2D31', borderRadius: '10px', padding: '24px' }}>
+          <AIOverviewOpportunity />
         </div>
 
         {/* ── Footer ── */}
