@@ -1,16 +1,16 @@
 import React, { useState } from 'react'
-import ServerDiscoveryPrototype from './ServerDiscoveryPrototype'
+import ForumInvitePrototype from './components/ForumInvitePrototype'
 import ServerInsightsReferralQuality from './components/ServerInsightsReferralQuality'
 import mockTrafficSources from './data/mockTrafficSources'
 import mockAhrefsData from './data/mockAhrefsData'
 
 const NAV_ITEMS = [
-  { id: 'discovery',        label: '✨ Discovery Personalization' },
+  { id: 'forum-discovery',  label: '⚔️ Forum Channel Discovery' },
   { id: 'referral-quality', label: '📊 Referral Quality Intelligence' },
 ]
 
 function App() {
-  const [activeView, setActiveView] = useState('discovery')
+  const [activeView, setActiveView] = useState('forum-discovery')
 
   return (
     <div style={{ fontFamily: "'DM Sans', 'Nunito', sans-serif" }}>
@@ -55,7 +55,7 @@ function App() {
 
       {/* Offset content below fixed nav */}
       <div style={{ paddingTop: '44px' }}>
-        {activeView === 'discovery' && <ServerDiscoveryPrototype />}
+        {activeView === 'forum-discovery' && <ForumInvitePrototype />}
         {activeView === 'referral-quality' && (
           <ServerInsightsReferralQuality
             trafficSources={mockTrafficSources}
