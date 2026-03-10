@@ -1,0 +1,471 @@
+diff --git a/App.tsx b/App.tsx
+index b4d6187..d0a160d 100644
+--- a/App.tsx
++++ b/App.tsx
+@@ -7,6 +7,8 @@ import HomePage from './pages/HomePage';
+ import AboutPage from './pages/AboutPage';
+ import CaseStudyPage from './pages/CaseStudyPage';
+ import ContactPage from './pages/ContactPage';
++import WritingPage from './pages/WritingPage';
++import PostPage from './pages/PostPage';
+ 
+ const Layout: React.FC = () => {
+   return (
+@@ -29,6 +31,8 @@ const App: React.FC = () => {
+           <Route path="about" element={<AboutPage />} />
+           <Route path="case-study/:slug" element={<CaseStudyPage />} />
+           <Route path="contact" element={<ContactPage />} />
++          <Route path="writing" element={<WritingPage />} />
++          <Route path="writing/:slug" element={<PostPage />} />
+         </Route>
+       </Routes>
+     </BrowserRouter>
+diff --git a/components/Header.tsx b/components/Header.tsx
+index c2243f1..6858962 100644
+--- a/components/Header.tsx
++++ b/components/Header.tsx
+@@ -11,6 +11,7 @@ const Header: React.FC = () => {
+   const navLinks = [
+     { name: 'Home', path: '/' },
+     { name: 'About', path: '/about' },
++    { name: 'Writing', path: '/writing' },
+     { name: 'Contact', path: '/contact' },
+   ];
+ 
+diff --git a/constants.ts b/constants.ts
+index d1e485d..523d15a 100644
+--- a/constants.ts
++++ b/constants.ts
+@@ -1,4 +1,4 @@
+-import { CareerHighlight, CaseStudy, SkillCategory } from './types';
++import { CareerHighlight, CaseStudy, SkillCategory, WritingPost } from './types';
+ 
+ export const PERSONAL_INFO = {
+   name: "Tyler Vickers",
+@@ -184,3 +184,140 @@ export const SKILL_CATEGORIES: SkillCategory[] = [
+     ]
+   }
+ ];
++
++export const WRITING_POSTS: WritingPost[] = [
++  {
++    slug: 'discord-ai-search-opportunity',
++    title: 'The Server Admin Problem Nobody Is Solving',
++    subtitle: 'A customer-first take on Discord\'s biggest untapped growth opportunity.',
++    publishedAt: '2026-03-10',
++    readMinutes: 5,
++    tags: ['Product Strategy', 'AI Search', 'Community Platforms', 'Discord'],
++    excerpt:
++      'Indie game studios launch Discord servers, ride a wave of launch energy, and then watch new joins slow to a trickle. The content is great. Nobody new is seeing it. This is a discovery problem — and Discord is uniquely positioned to solve it.',
++    body: [
++      {
++        type: 'h2',
++        content: 'Start with a server admin, not a search algorithm',
++      },
++      {
++        type: 'p',
++        content:
++          'Imagine you\'re an indie game studio — maybe three people, maybe ten. You\'ve spent two years building something. You launch a Discord server because you know it\'s where players go to find community: to share clips, ask questions, talk strategy, and celebrate wins.',
++      },
++      {
++        type: 'p',
++        content:
++          'The first month is electric. There are strategy debates in the forums, new players asking questions that veterans are excited to answer. Then the launch hype cools. New server joins slow down. Your most committed players are still there every day — but the community feels like it\'s talking to itself. The content is great. Nobody new is seeing it.',
++      },
++      {
++        type: 'p',
++        content:
++          'This is the problem. And it\'s not really a Discord problem — it\'s a discovery problem that Discord is uniquely positioned to solve.',
++      },
++      { type: 'hr', content: '' },
++      {
++        type: 'h2',
++        content: 'What the server admin actually needs',
++      },
++      {
++        type: 'p',
++        content: 'The job isn\'t "get more Discord members." That\'s an output. The job is:',
++      },
++      {
++        type: 'p-bold-lead',
++        content:
++          'Help me turn the authentic conversations happening in my server into durable visibility for my game.',
++      },
++      {
++        type: 'p',
++        content:
++          'A player posting a breakdown of an advanced mechanic is creating content that another player somewhere — one who doesn\'t know the server exists yet — is actively searching for. A forum thread where 40 members debate the best loadout for a new patch is exactly the kind of discussion that surfaces when people ask AI search engines for recommendations.',
++      },
++      {
++        type: 'p',
++        content:
++          'The server admin has no way to know this is happening. They don\'t know which forum threads are driving search traffic. They don\'t know that members who joined via organic search retained 3× better than those who came from Server Discovery. They\'re optimizing for member count — and missing the signal that actually predicts a healthy, growing community.',
++      },
++      { type: 'hr', content: '' },
++      {
++        type: 'h2',
++        content: 'Discord\'s superpower',
++      },
++      {
++        type: 'p',
++        content:
++          'Forum Channels, when open and active, naturally generate the content that AI search is built to reward.',
++      },
++      {
++        type: 'p',
++        content:
++          'When someone types a question into Google AI Overviews, Perplexity, or SearchGPT, the model doesn\'t search for one answer — it fans out across dozens of related sub-queries simultaneously, then cites sources that appear across the most of them. A busy Forum Channel on game strategy doesn\'t just cover one keyword. It covers beginner questions, advanced tactics, patch reactions, loadout guides — all the angles, all at once, written by people who actually care.',
++      },
++      {
++        type: 'p',
++        content:
++          'That\'s not content you can manufacture. It\'s what authentic community looks like. And Discord hosts more of it than any other platform.',
++      },
++      {
++        type: 'p',
++        content:
++          'Reddit has been capturing this value for years — appearing in roughly 21% of all Google AI Overviews as of early 2026, growing 450% in less than a year. Discord community and server pages appear in under 1% of topic-specific AI Overviews — not because the content isn\'t there, but because it hasn\'t been made safely discoverable.',
++      },
++      { type: 'hr', content: '' },
++      {
++        type: 'h2',
++        content: 'The product bet',
++      },
++      {
++        type: 'p',
++        content:
++          'The unlock is straightforward to state, though it takes real product work to do well:',
++      },
++      {
++        type: 'p-bold-lead',
++        content:
++          'Make it easy for server admins to open their Forum Channels to the world — safely, richly, and optimized for how AI search works — and show them when it\'s paying off.',
++      },
++      {
++        type: 'p',
++        content:
++          'A guided setup flow that helps admins configure their forums for public indexability, with moderation defaults and trust-and-safety rails built in. Structured metadata (<strong>DiscussionForumPosting</strong> schema) that signals to search engines: this is a real community thread, here\'s the topic, here\'s the engagement. Then bring the signal back to admins in their Growth & Activation view — which external sources are driving joins, which forum threads are getting picked up.',
++      },
++      {
++        type: 'p',
++        content:
++          'The enriched invite screen closes the loop. When a prospective member lands on a server\'s join page after finding it through search, they currently see a static snapshot. What if they saw the live pulse of the community — recent forum highlights, active threads, this week\'s clips? The content that made them search becomes the content that closes the join.',
++      },
++      { type: 'hr', content: '' },
++      {
++        type: 'h2',
++        content: 'How you measure it',
++      },
++      {
++        type: 'p',
++        content: 'The north star isn\'t member count. It\'s:',
++      },
++      {
++        type: 'p-bold-lead',
++        content: 'Externally-referred server joins retained at 7 days.',
++      },
++      {
++        type: 'p',
++        content:
++          'This aligns the server admin\'s incentive (a healthy, growing community) with Discord\'s incentive (sustained engagement) and the player\'s incentive (finding somewhere worth staying). Supporting metrics track brand citation share — the percentage of relevant topic queries where a Discord community is cited in AI search — and how the engagement rate of external referral joins compares to Discovery joins. That gap is the story.',
++      },
++      { type: 'hr', content: '' },
++      {
++        type: 'p',
++        content:
++          'Discord can make different infrastructure decisions than Reddit made — and the content advantage it has is real: richer, more structured, more moderated, more multimedia. The server admin who wonders why their community\'s great moments aren\'t reaching new players is waiting for a product that solves this. Forum Channels are already doing the work. The question is whether Discord makes it visible.',
++      },
++      { type: 'hr', content: '' },
++      {
++        type: 'em',
++        content: 'Tyler Vick is a product manager focused on growth, community platforms, and AI-era search.',
++      },
++    ],
++  },
++];
+diff --git a/pages/PostPage.tsx b/pages/PostPage.tsx
+new file mode 100644
+index 0000000..af07cdd
+--- /dev/null
++++ b/pages/PostPage.tsx
+@@ -0,0 +1,166 @@
++import React, { useEffect } from 'react';
++import { useParams, Link } from 'react-router-dom';
++import { motion } from 'motion/react';
++import { WRITING_POSTS } from '../constants';
++import { ContentBlock } from '../types';
++import ArrowLeftIcon from '../components/icons/ArrowLeftIcon';
++import SEO, { getPersonSchema } from '../components/SEO';
++
++const formatDate = (iso: string) => {
++  const d = new Date(iso + 'T12:00:00');
++  return d.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
++};
++
++// Renders a single content block. 'p' blocks may contain limited inline HTML
++// (<strong>, <em>) stored as trusted content from our own constants.ts.
++const Block: React.FC<{ block: ContentBlock }> = ({ block }) => {
++  switch (block.type) {
++    case 'h2':
++      return (
++        <h2 className="text-2xl font-bold text-white mt-10 mb-4 tracking-tight">
++          {block.content}
++        </h2>
++      );
++    case 'h3':
++      return (
++        <h3 className="text-xl font-semibold text-white mt-8 mb-3">
++          {block.content}
++        </h3>
++      );
++    case 'p':
++      return (
++        <p
++          className="text-slate-300 leading-relaxed mb-5 text-[1.0625rem]"
++          dangerouslySetInnerHTML={{ __html: block.content }}
++        />
++      );
++    case 'p-bold-lead':
++      return (
++        <p className="text-white font-semibold leading-relaxed mb-5 text-lg border-l-2 border-amber-500 pl-5 py-1">
++          {block.content}
++        </p>
++      );
++    case 'hr':
++      return <hr className="border-slate-700/60 my-8" />;
++    case 'em':
++      return (
++        <p className="text-slate-500 text-sm italic mt-8">
++          {block.content}
++        </p>
++      );
++    default:
++      return null;
++  }
++};
++
++const PostPage: React.FC = () => {
++  const { slug } = useParams<{ slug: string }>();
++  const post = WRITING_POSTS.find((p) => p.slug === slug);
++
++  useEffect(() => {
++    window.scrollTo(0, 0);
++  }, [slug]);
++
++  if (!post) {
++    return (
++      <div className="container mx-auto px-6 py-16 text-center">
++        <h1 className="text-4xl text-white">Post Not Found</h1>
++        <p className="text-slate-400 mt-4">This essay doesn't exist or may have moved.</p>
++        <Link
++          to="/writing"
++          className="mt-8 inline-block bg-amber-500 text-black text-sm font-medium py-3 px-6 rounded-lg hover:bg-orange-500 tracking-wider"
++        >
++          Back to Writing
++        </Link>
++      </div>
++    );
++  }
++
++  return (
++    <>
++      <SEO
++        title={`${post.title} — Tyler Vickers`}
++        description={post.excerpt}
++        url={`https://tyvick.com/writing/${post.slug}`}
++        type="article"
++        keywords={post.tags}
++        structuredData={[
++          getPersonSchema(),
++          {
++            '@type': 'Article',
++            headline: post.title,
++            description: post.excerpt,
++            url: `https://tyvick.com/writing/${post.slug}`,
++            datePublished: post.publishedAt,
++            author: { '@id': 'https://tyvick.com/#person' },
++            keywords: post.tags.join(', '),
++          },
++        ]}
++      />
++
++      <div className="container mx-auto px-6 py-12 max-w-2xl">
++        <motion.div
++          initial={{ opacity: 0, y: 20 }}
++          animate={{ opacity: 1, y: 0 }}
++          transition={{ duration: 0.6 }}
++        >
++          {/* Back link */}
++          <Link
++            to="/writing"
++            className="inline-flex items-center gap-2 text-slate-400 hover:text-amber-400 text-sm mb-10 transition-colors duration-200"
++          >
++            <ArrowLeftIcon />
++            All writing
++          </Link>
++
++          {/* Header */}
++          <header className="mb-10">
++            <div className="flex items-center gap-3 text-xs text-slate-500 mb-4">
++              <span>{formatDate(post.publishedAt)}</span>
++              <span>·</span>
++              <span>{post.readMinutes} min read</span>
++            </div>
++
++            <h1 className="text-3xl md:text-4xl font-bold text-white mb-3 leading-tight tracking-tight">
++              {post.title}
++            </h1>
++            <p className="text-slate-400 text-lg italic mb-5">{post.subtitle}</p>
++
++            <div className="flex flex-wrap gap-2">
++              {post.tags.map((tag) => (
++                <span
++                  key={tag}
++                  className="text-xs px-3 py-1 rounded-full bg-slate-800 text-slate-400 border border-slate-700"
++                >
++                  {tag}
++                </span>
++              ))}
++            </div>
++          </header>
++
++          <hr className="border-slate-700/60 mb-8" />
++
++          {/* Body */}
++          <article>
++            {post.body.map((block, i) => (
++              <Block key={i} block={block} />
++            ))}
++          </article>
++
++          {/* Footer nav */}
++          <div className="mt-14 pt-8 border-t border-slate-800">
++            <Link
++              to="/writing"
++              className="inline-flex items-center gap-2 text-slate-400 hover:text-amber-400 text-sm transition-colors duration-200"
++            >
++              <ArrowLeftIcon />
++              Back to all writing
++            </Link>
++          </div>
++        </motion.div>
++      </div>
++    </>
++  );
++};
++
++export default PostPage;
+diff --git a/pages/WritingPage.tsx b/pages/WritingPage.tsx
+new file mode 100644
+index 0000000..7da1309
+--- /dev/null
++++ b/pages/WritingPage.tsx
+@@ -0,0 +1,81 @@
++import React from 'react';
++import { Link } from 'react-router-dom';
++import { motion } from 'motion/react';
++import { WRITING_POSTS } from '../constants';
++import SEO, { getPersonSchema } from '../components/SEO';
++
++const formatDate = (iso: string) => {
++  const d = new Date(iso + 'T12:00:00');
++  return d.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
++};
++
++const WritingPage: React.FC = () => {
++  return (
++    <>
++      <SEO
++        title="Writing — Tyler Vickers"
++        description="Product strategy essays on growth, community platforms, and the AI-era web by Tyler Vickers, Senior Product Manager."
++        url="https://tyvick.com/writing"
++        keywords={['Product Strategy', 'PM Writing', 'AI Search', 'Community Platforms', 'Tyler Vickers']}
++        structuredData={[getPersonSchema()]}
++      />
++      <div className="container mx-auto px-6 py-16 max-w-3xl">
++        <motion.div
++          initial={{ opacity: 0, y: 20 }}
++          animate={{ opacity: 1, y: 0 }}
++          transition={{ duration: 0.6 }}
++        >
++          <h1 className="text-4xl md:text-5xl font-bold text-white mb-3 tracking-tight">
++            Writing
++          </h1>
++          <p className="text-slate-400 text-lg mb-12 leading-relaxed">
++            Product strategy essays on growth, community platforms, and the AI-era web.
++          </p>
++
++          <div className="flex flex-col gap-8">
++            {WRITING_POSTS.map((post, i) => (
++              <motion.article
++                key={post.slug}
++                initial={{ opacity: 0, y: 16 }}
++                animate={{ opacity: 1, y: 0 }}
++                transition={{ duration: 0.5, delay: i * 0.08 }}
++                className="group border border-slate-800 rounded-2xl p-7 hover:border-amber-500/40 hover:bg-slate-800/30 transition-all duration-300"
++              >
++                <Link to={`/writing/${post.slug}`} className="block">
++                  <div className="flex items-center gap-3 text-xs text-slate-500 mb-3">
++                    <span>{formatDate(post.publishedAt)}</span>
++                    <span>·</span>
++                    <span>{post.readMinutes} min read</span>
++                  </div>
++
++                  <h2 className="text-xl font-bold text-white mb-2 group-hover:text-amber-400 transition-colors duration-200">
++                    {post.title}
++                  </h2>
++                  <p className="text-slate-400 text-sm italic mb-3">{post.subtitle}</p>
++                  <p className="text-slate-400 leading-relaxed mb-5">{post.excerpt}</p>
++
++                  <div className="flex flex-wrap gap-2 mb-5">
++                    {post.tags.map((tag) => (
++                      <span
++                        key={tag}
++                        className="text-xs px-3 py-1 rounded-full bg-slate-800 text-slate-400 border border-slate-700"
++                      >
++                        {tag}
++                      </span>
++                    ))}
++                  </div>
++
++                  <span className="text-amber-400 text-sm font-medium group-hover:underline">
++                    Read essay →
++                  </span>
++                </Link>
++              </motion.article>
++            ))}
++          </div>
++        </motion.div>
++      </div>
++    </>
++  );
++};
++
++export default WritingPage;
+diff --git a/types.ts b/types.ts
+index 4b12517..8da2b32 100644
+--- a/types.ts
++++ b/types.ts
+@@ -34,3 +34,22 @@ export interface SkillCategory {
+   title: string;
+   skills: Skill[];
+ }
++
++export type ContentBlockType = 'h2' | 'h3' | 'p' | 'p-bold-lead' | 'hr' | 'em';
++
++export interface ContentBlock {
++  type: ContentBlockType;
++  // Plain text for most blocks; may contain <strong> / <em> inline HTML for 'p' blocks
++  content: string;
++}
++
++export interface WritingPost {
++  slug: string;
++  title: string;
++  subtitle: string;
++  publishedAt: string; // ISO date string, e.g. "2026-03-10"
++  readMinutes: number;
++  tags: string[];
++  excerpt: string;
++  body: ContentBlock[];
++}
