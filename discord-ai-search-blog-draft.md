@@ -34,7 +34,7 @@ When someone types a question into Google AI Overviews, Perplexity, or SearchGPT
 
 That's not content you can manufacture. It's what authentic community looks like. And Discord hosts more of it than any other platform.
 
-Reddit has been capturing this value for years — appearing in roughly 21% of all Google AI Overviews as of early 2026, growing 450% in less than a year. Discord's share is effectively zero. Not because the content isn't there. Because it hasn't been made safely discoverable.
+Reddit has been capturing this value for years — appearing in roughly 21% of all Google AI Overviews as of early 2026, growing 450% in less than a year. Discord community and server pages appear in under 1% of topic-specific AI Overviews — not because the content isn't there, but because it hasn't been made safely discoverable.
 
 ---
 

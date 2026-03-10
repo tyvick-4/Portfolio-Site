@@ -16,8 +16,10 @@ const SectionHeader = ({ icon: Icon, title }) => (
 );
 
 // ─── Citation share bar ──────────────────────────────────────────────────────
+// barWidth: CSS width for the bar (defaults to pct if numeric, e.g. "21%")
+// pct: display label (may be non-numeric, e.g. "<1%")
 
-const CitationBar = ({ label, pct, color, note }) => (
+const CitationBar = ({ label, pct, barWidth, color, note }) => (
   <div style={{ display: 'flex', flexDirection: 'column', gap: '5px' }}>
     <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline' }}>
       <span style={{ fontSize: '13px', fontWeight: '600', color: '#F2F3F5' }}>{label}</span>
@@ -25,7 +27,7 @@ const CitationBar = ({ label, pct, color, note }) => (
     </div>
     <div style={{ height: '8px', backgroundColor: '#1E1F22', borderRadius: '4px', overflow: 'hidden' }}>
       <div style={{
-        width: pct,
+        width: barWidth ?? pct,
         height: '100%',
         backgroundColor: color,
         borderRadius: '4px',
@@ -218,14 +220,16 @@ const AIOverviewOpportunity = () => {
             <CitationBar
               label="Reddit"
               pct="21%"
+              barWidth="21%"
               color="#FF4500"
               note="+450% AI Overview citations Mar→Jun 2025 · Cited in 21% of all Google AI Overviews"
             />
             <CitationBar
-              label="Discord"
-              pct="0%"
+              label="Discord community pages"
+              pct="<1%"
+              barWidth="1%"
               color="#ED4245"
-              note="Appears in 0% of Google AI Overviews despite 860M monthly visits"
+              note="Community/server pages cited in <1% of topic AIOs · 4 of 1,000 Discord-adjacent queries (Ahrefs, Mar 2026)"
             />
 
             <div style={{
@@ -241,8 +245,8 @@ const AIOverviewOpportunity = () => {
               % of relevant topic queries where a Discord community is cited in Google AI Overviews,
               Perplexity, or SearchGPT. Reddit ranks in{' '}
               <strong style={{ color: '#FF4500' }}>37%</strong> of Google top-10 results;
-              Discord's current share is effectively zero — making this the largest
-              organic acquisition gap in the platform.
+              Discord community pages appear in under 1% of topic AIOs even for Discord-adjacent queries — making this the
+              largest organic acquisition gap in the platform.
             </div>
           </div>
         </div>
