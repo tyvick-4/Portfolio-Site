@@ -32,51 +32,77 @@ const HomePage: React.FC = () => {
         <div className="absolute inset-0 opacity-20">
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,_#fbbf24_0%,_transparent_50%)]"></div>
         </div>
-        <div className="container mx-auto px-6 py-20 relative z-10">
-          <motion.h1 
-            className="text-5xl md:text-7xl text-white mb-6 tracking-tight"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-          >
-            {PERSONAL_INFO.name}
-          </motion.h1>
-          <motion.h2 
-            className="text-2xl md:text-4xl text-amber-400 mb-8 tracking-normal"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.3 }}
-          >
-            {PERSONAL_INFO.title}
-          </motion.h2>
-          <motion.p 
-            className="text-lg md:text-xl max-w-2xl mx-auto md:mx-0 mb-10 leading-loose tracking-wide"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-          >
-            {PERSONAL_INFO.valueProp}
-          </motion.p>
-          <motion.div 
-            className="flex justify-center md:justify-start space-x-4"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.5 }}
-          >
-           <button
-  onClick={() => {
-    document.getElementById('work')?.scrollIntoView({ behavior: 'smooth' });
-  }}
-  className="bg-amber-500 text-black text-sm font-medium py-3 px-8 rounded-xl hover:bg-orange-500 transition-all duration-300 transform hover:scale-105 hover:shadow-lg hover:shadow-amber-500/30 tracking-wider"
->
-  View My Work
-</button>
-            <Link 
-              to="/contact" 
-              className="bg-[#1f1b16] text-white text-sm font-medium py-3 px-8 rounded-xl hover:bg-[#252018] border border-[#292520] transition-all duration-300 transform hover:scale-105 tracking-wider"
+        <div className="container mx-auto px-6 py-20 relative z-10 flex flex-col md:flex-row items-center md:items-start gap-12">
+          <div className="md:w-3/5">
+            <motion.h1
+              className="text-5xl md:text-7xl text-white mb-6 tracking-tight"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
             >
-              Contact Me
-            </Link>
+              {PERSONAL_INFO.name}
+            </motion.h1>
+            <motion.h2
+              className="text-2xl md:text-4xl text-amber-400 mb-8 tracking-normal"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.3 }}
+            >
+              {PERSONAL_INFO.title}
+            </motion.h2>
+            <motion.div
+              className="flex justify-center mb-8 md:hidden"
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.8, delay: 0.35 }}
+            >
+              <img
+                src={PERSONAL_INFO.headshot}
+                alt={PERSONAL_INFO.name}
+                className="w-64 h-64 rounded-2xl object-cover border-2 border-amber-500/30 shadow-xl shadow-amber-500/10"
+              />
+            </motion.div>
+            <motion.p
+              className="text-lg md:text-xl max-w-2xl mx-auto md:mx-0 mb-10 leading-loose tracking-wide"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.4 }}
+            >
+              {PERSONAL_INFO.valueProp}
+            </motion.p>
+            <motion.div
+              className="flex justify-center md:justify-start space-x-4"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.5 }}
+            >
+              <button
+                onClick={() => {
+                  document.getElementById('work')?.scrollIntoView({ behavior: 'smooth' });
+                }}
+                className="bg-amber-500 text-black text-sm font-medium py-3 px-8 rounded-xl hover:bg-orange-500 transition-all duration-300 transform hover:scale-105 hover:shadow-lg hover:shadow-amber-500/30 tracking-wider"
+              >
+                View My Work
+              </button>
+              <Link
+                to="/contact"
+                className="bg-[#1f1b16] text-white text-sm font-medium py-3 px-8 rounded-xl hover:bg-[#252018] border border-[#292520] transition-all duration-300 transform hover:scale-105 tracking-wider"
+              >
+                Contact Me
+              </Link>
+            </motion.div>
+          </div>
+          <motion.div
+            className="md:w-2/5 hidden md:flex justify-center md:-ml-12"
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.8, delay: 0.6 }}
+          >
+            <img
+              src={PERSONAL_INFO.headshot}
+              alt={PERSONAL_INFO.name}
+              className="w-64 h-64 md:w-80 md:h-80 rounded-2xl object-cover border-2 border-amber-500/30 shadow-xl shadow-amber-500/10"
+            />
           </motion.div>
         </div>
       </section>
