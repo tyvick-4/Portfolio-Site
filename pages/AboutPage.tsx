@@ -39,7 +39,7 @@ const AboutPage: React.FC = () => {
             <div className="relative">
               <div className="absolute inset-0 bg-gradient-to-br from-amber-500/20 to-orange-500/20 rounded-2xl blur-xl" />
               <img 
-                src={PERSONAL_INFO.headshot} 
+                src={PERSONAL_INFO.photo}
                 alt={PERSONAL_INFO.name} 
                 className="relative rounded-2xl w-full shadow-2xl border-2 border-[#292520]"
               />
