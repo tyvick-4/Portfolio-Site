@@ -102,6 +102,28 @@ const AboutPage: React.FC = () => {
             ))}
           </div>
         </motion.div>
+        <motion.div
+          id="consultation"
+          className="mt-16 bg-gradient-to-br from-amber-500/10 to-orange-500/10 border border-amber-500/30 rounded-2xl p-10 text-center"
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.7 }}
+        >
+          <h2 className="text-3xl text-white mb-4">Book a Consultation</h2>
+          <p className="text-stone-300 text-lg leading-loose mb-8 max-w-xl mx-auto">
+            Want to talk product strategy, get career advice, or explore a collaboration? Schedule a 60-minute session.
+          </p>
+          <motion.a
+            href="https://calendly.com/tyvick/60min"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-block bg-amber-500 text-black text-sm font-medium py-3 px-10 rounded-xl hover:bg-orange-500 transition-all duration-300 transform hover:scale-105 hover:shadow-lg hover:shadow-amber-500/30 tracking-wider"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.98 }}
+          >
+            Schedule a Meeting
+          </motion.a>
+        </motion.div>
       </motion.div>
     </div>
     </>

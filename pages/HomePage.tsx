@@ -191,6 +191,28 @@ const HomePage: React.FC = () => {
           ))}
         </div>
       </section>
+
+      {/* Consultation CTA Section */}
+      <section className="py-24">
+        <motion.div
+          className="bg-gradient-to-br from-amber-500/10 to-orange-500/10 border border-amber-500/30 rounded-2xl p-12 text-center max-w-3xl mx-auto"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.6 }}
+        >
+          <h2 className="text-4xl md:text-5xl text-white mb-4">Let's Talk</h2>
+          <p className="text-xl text-stone-300 leading-loose mb-8 max-w-xl mx-auto">
+            Interested in product strategy, a career conversation, or working together? Book a 60-minute consultation.
+          </p>
+          <Link
+            to="/about#consultation"
+            className="inline-block bg-amber-500 text-black text-sm font-medium py-3 px-10 rounded-xl hover:bg-orange-500 transition-all duration-300 transform hover:scale-105 hover:shadow-lg hover:shadow-amber-500/30 tracking-wider"
+          >
+            Book a Consultation
+          </Link>
+        </motion.div>
+      </section>
     </div>
     </>
   );
