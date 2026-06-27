@@ -2,12 +2,13 @@ import { CareerHighlight, CaseStudy, SkillCategory } from './types';
 
 export const PERSONAL_INFO = {
   name: "Tyler Vickers",
-  title: "Senior Product Manager",
+  title: "Staff Product Manager",
+  company: "Discord",
   headshot: "/images/avatar.png",
   photo: "/headshot.jpg",
   linkedin: "https://www.linkedin.com/in/tyler-vickers-1128258/",
   email: "tyvick@gmail.com",
-  valueProp: "Hey there, welcome! I'm Tyler, a grateful Senior PM privileged to have built and launched features used by millions daily on Twitch and Fire TV. I turn complex data into actionable product strategies and bring technical and non-technical teams together to ship features that drive measurable growth.",
+  valueProp: "Hey there, welcome! I'm Tyler, a grateful Staff PM privileged to have built and launched features used by millions daily on Twitch, Fire TV, and Discord. I turn complex data into actionable product strategies and bring technical and non-technical teams together to ship features that drive measurable growth.",
 };
 
 export const CAREER_HIGHLIGHTS: CareerHighlight[] = [
@@ -82,7 +83,7 @@ export const CASE_STUDIES: CaseStudy[] = [
     heroImage: "/images/project-orbit-hero.jpg",
     company: "Amazon Fire TV",
     role: "Senior Product Manager, Growth",
-    duration: "2022-Present",
+    duration: "Sept 2022 – April 2026",
     tags: ["Customer Lifecycle", "Data Analysis", "Strategy", "AI/ML"],
     overview: "Fire TV Channels had over 1 million monthly viewers but didn't have the framework to understand how those viewers changed month to month. There was a new viewer churn problem, but not a mechanism to target those viewers by specific behaviors. I led the development of Project Orbit, a customer lifecycle framework that used heuristics and data science partnership to determine appropriate customer segments to address that churn. This enabled new insights that powered our 1P FAST attach rate goals for Fire TV and supported new customer retention experiments estimated to drive +$7M in annualized contribution revenue.",
     problem: "Fire TV's growth team had limited visibility into what was driving engagement decline. We couldn't identify which customers were at risk or why they were leaving, so marketing campaigns targeted all customers generically with no segmentation by behavior or content preference. While we partnered with excellent brands like The Athletic and NCAA for original programming, we also didn't have a standard framework for understanding how those investments helped our new/retained user goals. The business needed a segmentation model that could translate engagement data into targeted action.",

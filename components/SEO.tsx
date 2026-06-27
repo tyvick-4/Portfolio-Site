@@ -20,15 +20,25 @@ export const getPersonSchema = (url = 'https://tyvick.com'): SchemaObject => ({
   '@id': 'https://tyvick.com/#person',
   name: PERSONAL_INFO.name,
   url,
-  image: `https://tyvick.com${PERSONAL_INFO.headshot}`,
-  description: PERSONAL_INFO.valueProp,
-  jobTitle: PERSONAL_INFO.title,
+  image: `https://tyvick.com${PERSONAL_INFO.photo}`,
+  description: `${PERSONAL_INFO.title} for Growth at ${PERSONAL_INFO.company}, previously at Amazon Fire TV and Twitch. Turns complex data into actionable product strategies and brings technical and non-technical teams together to ship features that drive measurable growth.`,
+  jobTitle: `${PERSONAL_INFO.title}, Growth`,
   email: PERSONAL_INFO.email,
   sameAs: [PERSONAL_INFO.linkedin],
+  worksFor: {
+    '@type': 'Organization',
+    name: PERSONAL_INFO.company,
+    url: 'https://discord.com',
+  },
   alumniOf: [
-    { '@type': 'Organization', name: 'Amazon' },
-    { '@type': 'Organization', name: 'Twitch' },
+    { '@type': 'Organization', name: 'Amazon', url: 'https://www.amazon.com' },
+    { '@type': 'Organization', name: 'Twitch', url: 'https://www.twitch.tv' },
   ],
+  hasOccupation: {
+    '@type': 'Occupation',
+    name: `${PERSONAL_INFO.title}, Growth`,
+    skills: 'Product Management, Growth Strategy, Customer Lifecycle, Video Streaming, Creator Economy, Data Analysis, Cross-functional Leadership',
+  },
   knowsAbout: [
     'Product Management',
     'Growth Strategy',
@@ -38,6 +48,10 @@ export const getPersonSchema = (url = 'https://tyvick.com'): SchemaObject => ({
     'Data Analysis',
     'Cross-functional Leadership',
   ],
+  mainEntityOfPage: {
+    '@type': 'WebPage',
+    '@id': url,
+  },
 });
 
 /** Reusable WebSite schema */
@@ -70,8 +84,9 @@ const SEO: React.FC<SEOProps> = ({
   type = 'website',
   url = 'https://tyvick.com',
   keywords = [
-    'Senior Product Manager',
+    'Staff Product Manager',
     'Product Manager',
+    'Discord',
     'Twitch',
     'Amazon',
     'Fire TV',
