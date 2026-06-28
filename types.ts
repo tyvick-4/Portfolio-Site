@@ -19,6 +19,7 @@ export interface CaseStudy {
   role: string;
   duration: string;
   tags: string[];
+  metaDescription: string; // ≤155 chars for search snippets
   overview: string;
   problem: string;
   approach: string[];

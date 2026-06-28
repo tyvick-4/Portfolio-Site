@@ -9,6 +9,7 @@ export const PERSONAL_INFO = {
   linkedin: "https://www.linkedin.com/in/tyler-vickers-1128258/",
   email: "tyvick@gmail.com",
   valueProp: "Hey there, welcome! I'm Tyler, a grateful Staff PM privileged to have built and launched features used by millions daily on Twitch, Fire TV, and Discord. I turn complex data into actionable product strategies and bring technical and non-technical teams together to ship features that drive measurable growth.",
+  seoDescription: "Staff Product Manager for Growth at Discord, previously at Amazon Fire TV and Twitch. Turns complex data into actionable product strategies and brings technical and non-technical teams together to ship features that drive measurable growth.",
 };
 
 export const CAREER_HIGHLIGHTS: CareerHighlight[] = [
@@ -46,6 +47,7 @@ export const CASE_STUDIES: CaseStudy[] = [
     role: "Product Manager, Clips",
     duration: "2023",
     tags: ["Creator Economy", "Growth", "Video Streaming", "Frontend"],
+    metaDescription: "How I gave Twitch creators editorial control over their best clips, driving 1M+ incremental daily views and a 3% follow rate lift across 350K+ streamers.",
     overview: "Twitch creators attract new audiences through viral clips, but had no way to control which clips represented them on their channel pages. New viewers landing on a channel saw random clips—often low-quality or unrepresentative—leading to missed follow opportunities. I led the Clips team to build Featured Clips, giving creators editorial control over their best content and creating new discovery surfaces across Twitch.",
     problem: "When new viewers landed on a creator's channel, they had two options: watch a live stream (which might not represent the creator's best content) or scroll through an unfiltered list of clips. Creators had no control over which clips appeared first, meaning a viewer's first impression might be a low-quality clip from months ago. This hurt both creator growth and Twitch's ability to convert casual viewers into engaged community members. With over 1 billion clips on the platform, we needed a way to surface the best content.",
     approach: [
@@ -85,6 +87,7 @@ export const CASE_STUDIES: CaseStudy[] = [
     role: "Senior Product Manager, Growth",
     duration: "Sept 2022 – April 2026",
     tags: ["Customer Lifecycle", "Data Analysis", "Strategy", "AI/ML"],
+    metaDescription: "How I built a customer lifecycle state machine for Fire TV that reduced new user churn by 5% and contributed to $7M+ in annualized revenue from personalized content targeting.",
     overview: "Fire TV Channels had over 1 million monthly viewers but didn't have the framework to understand how those viewers changed month to month. There was a new viewer churn problem, but not a mechanism to target those viewers by specific behaviors. I led the development of Project Orbit, a customer lifecycle framework that used heuristics and data science partnership to determine appropriate customer segments to address that churn. This enabled new insights that powered our 1P FAST attach rate goals for Fire TV and supported new customer retention experiments estimated to drive +$7M in annualized contribution revenue.",
     problem: "Fire TV's growth team had limited visibility into what was driving engagement decline. We couldn't identify which customers were at risk or why they were leaving, so marketing campaigns targeted all customers generically with no segmentation by behavior or content preference. While we partnered with excellent brands like The Athletic and NCAA for original programming, we also didn't have a standard framework for understanding how those investments helped our new/retained user goals. The business needed a segmentation model that could translate engagement data into targeted action.",
     approach: [
@@ -122,6 +125,7 @@ export const CASE_STUDIES: CaseStudy[] = [
     role: "Product Manager, Embeds & Offsite Growth",
     duration: "2022 (Q3-Q4)",
     tags: ["Monetization", "Crisis Management", "Policy", "Cross-Functional Leadership"],
+    metaDescription: "How I led a 7-team cross-functional response to ad fraud in Twitch's embedded player, closing the loophole and protecting $10M+ in quarterly ad revenue.",
     overview: "Twitch's embedded player—used by millions to watch clips and streams across the web—had become a vector for ad fraud, costing the company over $10M in quarterly ad revenue. I led a cross-functional initiative spanning 7 teams to close the fraud loophole while preserving legitimate use cases and maintaining positive relationships with our developer community. Despite social media backlash and technical challenges, we successfully protected revenue while improving engagement on legitimate sites.",
     problem: "The Twitch embedded player allowed any website to display Twitch content, generating millions in ad revenue. However, the Ads and Monetization team discovered that bad actors were exploiting the open embed system to commit ad fraud—artificially inflating impressions, blocking legitimate ads, or serving content in contexts that violated advertiser agreements. This was costing Twitch $10M+ per quarter in lost or fraudulent ad revenue. We needed to close the fraud vector without breaking legitimate integrations or alienating our developer community.",
     approach: [

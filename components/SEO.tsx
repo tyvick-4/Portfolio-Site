@@ -79,7 +79,7 @@ export const getBreadcrumbSchema = (
 
 const SEO: React.FC<SEOProps> = ({
   title = `${PERSONAL_INFO.name} - ${PERSONAL_INFO.title}`,
-  description = PERSONAL_INFO.valueProp,
+  description = PERSONAL_INFO.seoDescription,
   image = '/images/avatar.png',
   type = 'website',
   url = 'https://tyvick.com',

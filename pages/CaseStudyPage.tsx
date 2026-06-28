@@ -34,7 +34,7 @@ const CaseStudyPage: React.FC = () => {
     <>
       <SEO
         title={`${caseStudy.title} - Case Study by Tyler Vickers`}
-        description={caseStudy.overview}
+        description={caseStudy.metaDescription}
         url={`https://tyvick.com/case-study/${caseStudy.slug}`}
         image={caseStudy.heroImage}
         type="article"
@@ -43,7 +43,7 @@ const CaseStudyPage: React.FC = () => {
           {
             '@type': 'Article',
             headline: caseStudy.title,
-            description: caseStudy.overview,
+            description: caseStudy.metaDescription,
             image: `https://tyvick.com${caseStudy.heroImage}`,
             url: `https://tyvick.com/case-study/${caseStudy.slug}`,
             author: { '@id': 'https://tyvick.com/#person' },
