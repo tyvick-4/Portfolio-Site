@@ -29,8 +29,8 @@ const caseStudies = [
     articleAbout: 'Creator tools, clip discovery, and audience growth on Twitch.',
     company: 'Twitch',
     tags: ['Creator Economy', 'Growth', 'Video Streaming', 'Frontend'],
-    datePublished: '2023-12-01',
-    dateModified: '2026-06-01',
+    datePublished: '2023-12-01T00:00:00-08:00',
+    dateModified: '2026-06-01T00:00:00-07:00',
     breadcrumb: 'Launching Featured Clips on Twitch',
   },
   {
@@ -43,8 +43,8 @@ const caseStudies = [
     articleAbout: 'Customer lifecycle modeling, churn reduction, and personalized content targeting for Amazon Fire TV.',
     company: 'Amazon Fire TV',
     tags: ['Customer Lifecycle', 'Data Analysis', 'Strategy', 'AI/ML'],
-    datePublished: '2024-04-01',
-    dateModified: '2026-06-01',
+    datePublished: '2024-04-01T00:00:00-07:00',
+    dateModified: '2026-06-01T00:00:00-07:00',
     breadcrumb: 'Developing Customer Lifecycle Heuristics for Fire TV',
   },
   {
@@ -57,8 +57,8 @@ const caseStudies = [
     articleAbout: 'Ad fraud prevention, embed policy, and cross-functional crisis response at Twitch.',
     company: 'Twitch',
     tags: ['Monetization', 'Crisis Management', 'Policy', 'Cross-Functional Leadership'],
-    datePublished: '2023-06-01',
-    dateModified: '2026-06-01',
+    datePublished: '2023-06-01T00:00:00-07:00',
+    dateModified: '2026-06-01T00:00:00-07:00',
     breadcrumb: 'Protecting $10M+ in Ad Revenue at Twitch',
   },
 ];
