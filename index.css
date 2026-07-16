@@ -30,6 +30,23 @@
     /* Typography */
     --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
     --font-display: 'DM Serif Display', Georgia, serif;
+    --font-mono: ui-monospace, 'SF Mono', 'Cascadia Mono', Menlo, Consolas, monospace;
+
+    /* Provenance (Writing section) - semantic attribution + redline colors.
+       Data-encoding colors like success/danger, not brand hues: human-written
+       text claims the amber accent (the human is the accent); AI gets a muted
+       slate; redlines use proofreader red/green. */
+    --prov-human: var(--color-accent-primary);
+    --prov-human-tint: rgba(251, 191, 36, 0.10);
+    --prov-ai: #8fa9c7;
+    --prov-ai-tint: rgba(143, 169, 199, 0.12);
+    --prov-edited-tint: rgba(196, 180, 157, 0.10);
+    --prov-del: #e0736b;
+    --prov-del-tint: rgba(224, 115, 107, 0.12);
+    --prov-ins: #7fb389;
+    --prov-ins-tint: rgba(127, 179, 137, 0.12);
+    --prov-verified: #7fb389;
+    --prov-needs-check: #e0736b;
   }
 
   body {
