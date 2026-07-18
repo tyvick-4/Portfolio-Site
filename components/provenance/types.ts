@@ -39,7 +39,13 @@ export interface Block {
 
 export interface ProvenanceDoc {
   meta: { title: string; author: string; published: string; readingMinutes: number };
-  receipt: { versions: number; humanPct: number; interventions: number };
+  receipt: {
+    versions: number;
+    humanPct: number;
+    interventions: number;
+    /** Attribution share of final words, in percent. */
+    share: { human: number; aiEdited: number; ai: number };
+  };
   sources: Record<string, SourceEntry>;
   versions: VersionInfo[];
   blocks: Block[];

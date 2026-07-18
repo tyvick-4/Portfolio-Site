@@ -8,8 +8,8 @@ import AnnotationNote from '../components/provenance/AnnotationNote';
 import PromptCard from '../components/provenance/PromptCard';
 import SourceChip from '../components/provenance/SourceChip';
 import { diffWords, wc } from '../components/provenance/diff';
-import type { ReadingMode, Span } from '../components/provenance/types';
-import { WRITTEN_WITH_NOT_BY as DOC } from '../content/writing';
+import type { ProvenanceDoc, ReadingMode, Span } from '../components/provenance/types';
+import { ESSAYS } from '../content/writing';
 import SEO from '../components/SEO';
 
 interface OpenNote {
@@ -18,20 +18,38 @@ interface OpenNote {
   y: number;
 }
 
-const Legend: React.FC = () => (
-  <div style={{ display: 'flex', gap: 14, alignItems: 'center', flexWrap: 'wrap', fontFamily: 'var(--font-mono)', fontSize: '0.72rem', color: 'var(--color-text-muted)' }}>
-    <span><span style={{ display: 'inline-block', width: 13, height: 4, borderRadius: 2, background: 'var(--prov-human)', marginRight: 6, verticalAlign: 'middle' }} />Human 33%</span>
-    <span><span style={{ display: 'inline-block', width: 13, height: 4, borderRadius: 2, background: 'linear-gradient(90deg, var(--prov-ai), var(--prov-human))', marginRight: 6, verticalAlign: 'middle' }} />AI, edited 50%</span>
-    <span><span style={{ display: 'inline-block', width: 13, height: 4, borderRadius: 2, background: 'var(--prov-ai)', marginRight: 6, verticalAlign: 'middle' }} />AI 17%</span>
-    <span style={{ opacity: 0.5 }}>·</span>
-    <SourceChip id="S2" origin="Reuters Institute" status="needs-check" />
-  </div>
-);
+const Legend: React.FC<{ doc: ProvenanceDoc }> = ({ doc }) => {
+  const { share } = doc.receipt;
+  const needsCheck = Object.keys(doc.sources).find(k => doc.sources[k].status === 'needs-check');
+  return (
+    <div style={{ display: 'flex', gap: 14, alignItems: 'center', flexWrap: 'wrap', fontFamily: 'var(--font-mono)', fontSize: '0.72rem', color: 'var(--color-text-muted)' }}>
+      <span><span style={{ display: 'inline-block', width: 13, height: 4, borderRadius: 2, background: 'var(--prov-human)', marginRight: 6, verticalAlign: 'middle' }} />Human {share.human}%</span>
+      <span><span style={{ display: 'inline-block', width: 13, height: 4, borderRadius: 2, background: 'linear-gradient(90deg, var(--prov-ai), var(--prov-human))', marginRight: 6, verticalAlign: 'middle' }} />AI, edited {share.aiEdited}%</span>
+      <span><span style={{ display: 'inline-block', width: 13, height: 4, borderRadius: 2, background: 'var(--prov-ai)', marginRight: 6, verticalAlign: 'middle' }} />AI {share.ai}%</span>
+      {needsCheck && (
+        <>
+          <span style={{ opacity: 0.5 }}>·</span>
+          <SourceChip id={needsCheck} origin={doc.sources[needsCheck].origin} status="needs-check" />
+        </>
+      )}
+    </div>
+  );
+};
 
 const WritingPage: React.FC = () => {
+  const [docIdx, setDocIdx] = useState(0);
+  const DOC = ESSAYS[docIdx];
+  const lastVersion = DOC.versions[DOC.versions.length - 1].id;
   const [mode, setMode] = useState<ReadingMode>('Read');
-  const [sel, setSel] = useState('v3');
+  const [sel, setSel] = useState(lastVersion);
   const [note, setNote] = useState<OpenNote | null>(null);
+
+  const switchEssay = (idx: number) => {
+    setDocIdx(idx);
+    setMode('Read');
+    setSel(ESSAYS[idx].versions[ESSAYS[idx].versions.length - 1].id);
+    setNote(null);
+  };
 
   const article = (withAttribution: boolean) => (
     <div className="max-w-2xl mx-auto">
@@ -103,6 +121,17 @@ const WritingPage: React.FC = () => {
         description="Essays published with their full revision history: the prompt, every draft, redlines, and where the human intervened."
       />
       <div className="container mx-auto px-6 pt-16 pb-10">
+        <div className="max-w-2xl mx-auto mb-8 flex flex-wrap gap-2">
+          {ESSAYS.map((e, i) => (
+            <button key={e.meta.title} onClick={() => switchEssay(i)} style={{
+              fontFamily: 'var(--font-mono)', fontSize: '0.72rem', padding: '5px 14px',
+              borderRadius: 999, cursor: 'pointer',
+              border: '1px solid ' + (i === docIdx ? 'var(--color-accent-primary)' : 'var(--color-border-light)'),
+              background: i === docIdx ? 'var(--prov-human-tint)' : 'transparent',
+              color: i === docIdx ? 'var(--color-accent-primary)' : 'var(--color-text-muted)',
+            }}>{e.meta.title}</button>
+          ))}
+        </div>
         <div className="max-w-2xl mx-auto border-b pb-8 mb-10" style={{ borderColor: 'var(--color-border)' }}>
           <p className="uppercase mb-4" style={{ fontFamily: 'var(--font-mono)', fontSize: '0.78rem', letterSpacing: '0.08em', color: 'var(--color-accent-primary)' }}>
             Essay · Writing, with receipts
@@ -131,7 +160,7 @@ const WritingPage: React.FC = () => {
       )}
 
       <ProvenanceBar sticky mode={mode} onModeChange={m => { setMode(m); setNote(null); }}>
-        {mode === 'Provenance' ? <Legend /> : <TrustReceipt {...DOC.receipt} />}
+        {mode === 'Provenance' ? <Legend doc={DOC} /> : <TrustReceipt versions={DOC.receipt.versions} humanPct={DOC.receipt.humanPct} interventions={DOC.receipt.interventions} />}
       </ProvenanceBar>
     </div>
   );
