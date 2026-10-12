@@ -4,7 +4,7 @@ export const PERSONAL_INFO = {
   name: "Tyler Vickers",
   title: "Staff Product Manager",
   company: "Discord",
-  headshot: "/images/avatar.png",
+  headshot: "/images/avatar.webp",
   photo: "/headshot.jpg",
   linkedin: "https://www.linkedin.com/in/tyler-vickers-1128258/",
   email: "tyvick@gmail.com",
