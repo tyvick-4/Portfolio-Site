@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'motion/react';
+import { Banner } from 'ascii.rest/react';
 import { PERSONAL_INFO, CAREER_HIGHLIGHTS, CASE_STUDIES } from '../constants';
 import MetricCard from '../components/MetricCard';
 import SEO, { getPersonSchema, getWebSiteSchema } from '../components/SEO';
@@ -34,8 +35,29 @@ const HomePage: React.FC = () => {
         </div>
         <div className="container mx-auto px-6 py-20 relative z-10 flex flex-col md:flex-row items-center md:items-start gap-12">
           <div className="md:w-3/5">
+            {/* Animated name banner by ascii.rest (MIT, @bas3line), credited in the footer.
+                Decorative on desktop; the h1 below keeps the name as real text. */}
+            {/* The glint only swaps the fill character for a denser one, so a wide solid
+                glint over the default "▓" letters keeps the sweep visible on the dark hero. */}
+            <motion.div
+              className="hidden md:block mb-6"
+              aria-hidden="true"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+            >
+              <Banner
+                text={PERSONAL_INFO.name}
+                font="mixed"
+                shadow="rounded"
+                color={['#fcd34d', '#f59e0b', '#ea580c', '#b91c1c']}
+                shadowColor="#3a342c"
+                glint={{ width: 6 }}
+                speed={2}
+              />
+            </motion.div>
             <motion.h1
-              className="text-5xl md:text-7xl text-white mb-6 tracking-tight"
+              className="text-5xl md:text-7xl text-white mb-6 tracking-tight md:sr-only"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
