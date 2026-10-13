@@ -7,6 +7,7 @@ import HomePage from './pages/HomePage';
 import AboutPage from './pages/AboutPage';
 import CaseStudyPage from './pages/CaseStudyPage';
 import ContactPage from './pages/ContactPage';
+import WritingPage from './pages/WritingPage';
 
 const Layout: React.FC = () => {
   return (
@@ -28,6 +29,7 @@ const App: React.FC = () => {
           <Route index element={<HomePage />} />
           <Route path="about" element={<AboutPage />} />
           <Route path="case-study/:slug" element={<CaseStudyPage />} />
+          <Route path="writing" element={<WritingPage />} />
           <Route path="contact" element={<ContactPage />} />
         </Route>
       </Routes>

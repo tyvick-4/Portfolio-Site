@@ -140,7 +140,9 @@ function injectMeta(html, route) {
     .replace(/(<meta name="twitter:description" content=")[^"]*(")/,`$1${safeDesc}$2`)
     .replace(/(<meta name="twitter:url" content=")[^"]*(")/,        `$1${canonicalUrl}$2`)
     .replace(/(<meta name="twitter:image" content=")[^"]*(")/,      `$1${imageUrl}$2`)
-    .replace(/(<link rel="canonical" href=")[^"]*(")/,              `$1${canonicalUrl}$2`);
+    .replace(/(<link rel="canonical" href=")[^"]*(")/,              `$1${canonicalUrl}$2`)
+    // The headshot preload is for the home hero only; these routes never show it.
+    .replace(/\s*<!-- Home hero headshot.*?-->\s*<link rel="preload" as="image" href="\/images\/avatar\.webp"[^>]*>/, '');
 
   // Inject Article + Breadcrumb JSON-LD for case study routes
   if (route.articleHeadline) {

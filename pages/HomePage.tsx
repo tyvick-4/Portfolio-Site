@@ -1,8 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'motion/react';
+import { Banner } from 'ascii.rest/react';
 import { PERSONAL_INFO, CAREER_HIGHLIGHTS, CASE_STUDIES } from '../constants';
 import MetricCard from '../components/MetricCard';
+import LazyVideo from '../components/LazyVideo';
 import SEO, { getPersonSchema, getWebSiteSchema } from '../components/SEO';
 
 const HomePage: React.FC = () => {
@@ -34,8 +36,29 @@ const HomePage: React.FC = () => {
         </div>
         <div className="container mx-auto px-6 py-20 relative z-10 flex flex-col md:flex-row items-center md:items-start gap-12">
           <div className="md:w-3/5">
+            {/* Animated name banner by ascii.rest (MIT, @bas3line), credited in the footer.
+                Decorative on desktop; the h1 below keeps the name as real text. */}
+            {/* The glint only swaps the fill character for a denser one, so a wide solid
+                glint over the default "▓" letters keeps the sweep visible on the dark hero. */}
+            <motion.div
+              className="hidden md:block mb-6"
+              aria-hidden="true"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+            >
+              <Banner
+                text={PERSONAL_INFO.name}
+                font="mixed"
+                shadow="rounded"
+                color={['#fcd34d', '#f59e0b', '#ea580c', '#b91c1c']}
+                shadowColor="#3a342c"
+                glint={{ width: 6 }}
+                speed={2}
+              />
+            </motion.div>
             <motion.h1
-              className="text-5xl md:text-7xl text-white mb-6 tracking-tight"
+              className="text-5xl md:text-7xl text-white mb-6 tracking-tight md:sr-only"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
@@ -50,18 +73,18 @@ const HomePage: React.FC = () => {
             >
               {PERSONAL_INFO.title}
             </motion.h2>
-            <motion.div
-              className="flex justify-center mb-8 md:hidden"
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.8, delay: 0.35 }}
-            >
+            {/* The headshot is the mobile LCP element, so it paints immediately instead of
+                fading in; index.html preloads it. */}
+            <div className="flex justify-center mb-8 md:hidden">
               <img
                 src={PERSONAL_INFO.headshot}
                 alt={PERSONAL_INFO.name}
+                width={256}
+                height={256}
+                fetchPriority="high"
                 className="w-64 h-64 rounded-2xl object-cover border-2 border-amber-500/30 shadow-xl shadow-amber-500/10"
               />
-            </motion.div>
+            </div>
             <motion.p
               className="text-lg md:text-xl max-w-2xl mx-auto md:mx-0 mb-10 leading-loose tracking-wide"
               initial={{ opacity: 0, y: 20 }}
@@ -92,18 +115,16 @@ const HomePage: React.FC = () => {
               </Link>
             </motion.div>
           </div>
-          <motion.div
-            className="md:w-2/5 hidden md:flex justify-center md:-ml-12"
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.8, delay: 0.6 }}
-          >
+          <div className="md:w-2/5 hidden md:flex justify-center md:-ml-12">
             <img
               src={PERSONAL_INFO.headshot}
               alt={PERSONAL_INFO.name}
+              width={320}
+              height={320}
+              fetchPriority="high"
               className="w-64 h-64 md:w-80 md:h-80 rounded-2xl object-cover border-2 border-amber-500/30 shadow-xl shadow-amber-500/10"
             />
-          </motion.div>
+          </div>
         </div>
       </section>
 
@@ -170,20 +191,22 @@ const HomePage: React.FC = () => {
               </div>
               <div className="h-64 lg:h-full relative overflow-hidden">
                 {study.heroVideo ? (
-                  <video 
-                    src={study.heroVideo} 
-                    autoPlay 
-                    loop 
-                    muted 
-                    playsInline
+                  <LazyVideo
+                    src={study.heroVideo}
                     className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700"
                   />
                 ) : (
-                  <img 
-                    src={study.heroImage} 
-                    alt={study.title} 
-                    className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700"
-                  />
+                  // heroImage stays a JPG for social previews; a WebP copy sits beside it.
+                  <picture>
+                    <source srcSet={study.heroImage.replace(/\.jpg$/, '.webp')} type="image/webp" />
+                    <img
+                      src={study.heroImage}
+                      alt={study.title}
+                      loading="lazy"
+                      decoding="async"
+                      className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700"
+                    />
+                  </picture>
                 )}
                 <div className="absolute inset-0 bg-gradient-to-t from-slate-900/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
               </div>
