@@ -121,7 +121,7 @@ const WritingPage: React.FC = () => {
         description="Essays published with their full revision history: the prompt, every draft, redlines, and where the human intervened."
       />
       <div className="container mx-auto px-6 pt-16 pb-10">
-        <div className="max-w-2xl mx-auto mb-8 flex flex-wrap gap-2">
+        {ESSAYS.length > 1 && <div className="max-w-2xl mx-auto mb-8 flex flex-wrap gap-2">
           {ESSAYS.map((e, i) => (
             <button key={e.meta.title} onClick={() => switchEssay(i)} style={{
               fontFamily: 'var(--font-mono)', fontSize: '0.72rem', padding: '5px 14px',
@@ -131,7 +131,7 @@ const WritingPage: React.FC = () => {
               color: i === docIdx ? 'var(--color-accent-primary)' : 'var(--color-text-muted)',
             }}>{e.meta.title}</button>
           ))}
-        </div>
+        </div>}
         <div className="max-w-2xl mx-auto border-b pb-8 mb-10" style={{ borderColor: 'var(--color-border)' }}>
           <p className="uppercase mb-4" style={{ fontFamily: 'var(--font-mono)', fontSize: '0.78rem', letterSpacing: '0.08em', color: 'var(--color-accent-primary)' }}>
             Essay · Writing, with receipts
