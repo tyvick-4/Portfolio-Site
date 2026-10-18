@@ -8,7 +8,7 @@ import type { ProvenanceDoc } from '../components/provenance/types';
    Human-first draft with one deliberately delegated AI paragraph.
    Source files: doc-changes-idea/claude/essays/provenance/. */
 export const PROVENANCE: ProvenanceDoc = {
-  meta: { title: 'Provenance', author: 'Ty Vickers', published: 'July 15, 2026', readingMinutes: 3 },
+  meta: { title: 'Provenance', author: 'Tyler Vickers', published: 'July 15, 2026', readingMinutes: 3 },
   receipt: { versions: 4, humanPct: 77, interventions: 3, share: { human: 75, aiEdited: 1, ai: 23 } },
   sources: {
     S1: { origin: 'MIT Media Lab, arXiv:2506.08872, Jun 2025', status: 'verified' },
