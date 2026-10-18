@@ -117,7 +117,7 @@ const WritingPage: React.FC = () => {
   return (
     <div onClick={() => setNote(null)}>
       <SEO
-        title="Writing | Ty Vickers"
+        title="Writing | Tyler Vickers"
         description="Essays published with their full revision history: the prompt, every draft, redlines, and where the human intervened."
       />
       <div className="container mx-auto px-6 pt-16 pb-10">
