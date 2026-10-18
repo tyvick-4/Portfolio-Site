@@ -15,14 +15,14 @@ const Header: React.FC = () => {
     { name: 'Contact', path: '/contact' },
   ];
 
-  const linkClass = "text-slate-300 hover:text-blue-400 transition-colors duration-300";
-  const activeLinkClass = "text-blue-400";
+  const linkClass = "text-muted hover:text-accent transition-colors duration-250";
+  const activeLinkClass = "!text-accent";
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-slate-900/80 backdrop-blur-sm shadow-md">
-      <nav className="container mx-auto px-6 py-4">
+    <header className="fixed top-0 left-0 right-0 z-50 bg-bg/80 backdrop-blur-sm border-b border-line">
+      <nav className="page-container py-4">
         <div className="flex items-center justify-between">
-          <NavLink to="/" className="text-xl font-bold text-white hover:text-blue-400 transition-colors duration-300">
+          <NavLink to="/" className="font-display text-xl font-semibold text-ink hover:text-accent transition-colors duration-250">
             {PERSONAL_INFO.name}
           </NavLink>
           <div className="hidden md:flex items-center space-x-8">
@@ -30,14 +30,15 @@ const Header: React.FC = () => {
               <NavLink
                 key={link.name}
                 to={link.path}
-                className={({ isActive }) => `${linkClass} ${isActive ? activeLinkClass : ''}`}
+                end={link.path === '/'}
+                className={({ isActive }) => `text-small ${linkClass} ${isActive ? activeLinkClass : ''}`}
               >
                 {link.name}
               </NavLink>
             ))}
           </div>
           <div className="md:hidden">
-            <button onClick={() => setIsOpen(!isOpen)} className="text-white focus:outline-none">
+            <button onClick={() => setIsOpen(!isOpen)} className="text-ink" aria-label={isOpen ? 'Close menu' : 'Open menu'}>
               {isOpen ? <XIcon /> : <MenuIcon />}
             </button>
           </div>
@@ -49,8 +50,9 @@ const Header: React.FC = () => {
                 <NavLink
                   key={link.name}
                   to={link.path}
+                  end={link.path === '/'}
                   onClick={() => setIsOpen(false)}
-                  className={({ isActive }) => `block px-2 py-1 text-lg ${linkClass} ${isActive ? activeLinkClass : ''}`}
+                  className={({ isActive }) => `block px-2 py-1 text-body-lg ${linkClass} ${isActive ? activeLinkClass : ''}`}
                 >
                   {link.name}
                 </NavLink>

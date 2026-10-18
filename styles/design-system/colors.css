@@ -1,0 +1,134 @@
+/* Dark navy — the default, canonical theme */
+:root{
+  --amber-50:#fffbeb;--amber-200:#fde68a;--amber-300:#fcd34d;--amber-400:#fbbf24;--amber-500:#f59e0b;--amber-600:#d97706;--amber-700:#b45309;
+
+  --bg:#0a0f1e;
+  --bg-raised:#0d1426;
+  --surface:#121a30;
+  --surface-2:#1a2338;
+  --surface-hover:#20293f;
+  --border:rgba(255,255,255,0.08);
+  --border-strong:rgba(255,255,255,0.16);
+
+  --text:#f6f4ef;
+  --text-muted:#9aa2b8;
+  --text-faint:#5f677e;
+
+  --accent:var(--amber-500);
+  --accent-hover:var(--amber-400);
+  --accent-active:var(--amber-600);
+  --accent-ink:#0a0f1e;
+  --accent-soft:rgba(245,158,11,0.12);
+  --accent-border:rgba(245,158,11,0.30);
+
+  --link:var(--amber-400);
+  --link-hover:var(--amber-300);
+
+  --shadow-card:0 1px 2px rgba(0,0,0,0.5), 0 12px 32px -12px rgba(0,0,0,0.45);
+  --shadow-glow:0 10px 34px -10px rgba(245,158,11,0.35);
+  --glow-radial:radial-gradient(circle at 50% 30%, rgba(245,158,11,0.22) 0%, transparent 55%); /* @kind other */
+}
+
+/* Light — direct parity counterpart to dark */
+:root[data-theme='light']{
+  --bg:#ffffff;
+  --bg-raised:#fbfbfa;
+  --surface:#f6f5f2;
+  --surface-2:#edeae3;
+  --surface-hover:#e5e1d8;
+  --border:rgba(10,15,30,0.10);
+  --border-strong:rgba(10,15,30,0.18);
+
+  --text:#12131a;
+  --text-muted:#5a5f70;
+  --text-faint:#8a8f9e;
+
+  --accent-ink:#0a0f1e;
+  --accent-soft:rgba(245,158,11,0.10);
+  --accent-border:rgba(245,158,11,0.35);
+
+  --link:var(--amber-600);
+  --link-hover:var(--amber-700);
+
+  --shadow-card:0 1px 2px rgba(20,15,5,0.06), 0 16px 36px -18px rgba(20,15,5,0.18);
+  --shadow-glow:0 12px 30px -10px rgba(245,158,11,0.25);
+  --glow-radial:radial-gradient(circle at 50% 20%, rgba(245,158,11,0.14) 0%, transparent 55%); /* @kind other */
+}
+
+/* Paper Editorial — ★ favorite exploration. Warm paper, magazine feel. */
+:root[data-theme='paper']{
+  --bg:#f6f0e4;
+  --bg-raised:#fbf7ef;
+  --surface:#fffdf9;
+  --surface-2:#ece2cd;
+  --surface-hover:#e3d7bd;
+  --border:rgba(26,19,7,0.14);
+  --border-strong:rgba(26,19,7,0.24);
+
+  --text:#1a1508;
+  --text-muted:#6b6250;
+  --text-faint:#9b917c;
+
+  --accent-ink:#1a1508;
+  --accent-soft:rgba(245,158,11,0.14);
+  --accent-border:rgba(245,158,11,0.4);
+
+  --link:var(--amber-700);
+  --link-hover:var(--amber-600);
+
+  --shadow-card:0 1px 1px rgba(26,19,7,0.05), 0 18px 40px -20px rgba(26,19,7,0.20);
+  --shadow-glow:0 10px 26px -8px rgba(245,158,11,0.3);
+  --glow-radial:radial-gradient(circle at 50% 20%, rgba(245,158,11,0.16) 0%, transparent 55%); /* @kind other */
+}
+
+/* Gallery Grid — light, minimal, near-white gallery wall */
+:root[data-theme='gallery']{
+  --bg:#ffffff;
+  --bg-raised:#ffffff;
+  --surface:#fafafa;
+  --surface-2:#f0f0ef;
+  --surface-hover:#e8e8e6;
+  --border:rgba(0,0,0,0.09);
+  --border-strong:rgba(0,0,0,0.18);
+
+  --text:#0a0a0a;
+  --text-muted:#68686a;
+  --text-faint:#a0a0a2;
+
+  --accent-ink:#0a0a0a;
+  --accent-soft:rgba(245,158,11,0.08);
+  --accent-border:rgba(245,158,11,0.3);
+
+  --link:var(--amber-600);
+  --link-hover:var(--amber-700);
+
+  --shadow-card:0 1px 2px rgba(0,0,0,0.04), 0 20px 40px -20px rgba(0,0,0,0.12);
+  --shadow-glow:0 10px 26px -10px rgba(245,158,11,0.25);
+  --glow-radial:radial-gradient(circle at 50% 20%, rgba(245,158,11,0.1) 0%, transparent 55%); /* @kind other */
+}
+
+/* Amber Pop — light, bold amber-forward */
+:root[data-theme='amber']{
+  --bg:#fff7e8;
+  --bg-raised:#fffbf1;
+  --surface:#ffffff;
+  --surface-2:#fdecc4;
+  --surface-hover:#fbe1a3;
+  --border:rgba(245,158,11,0.28);
+  --border-strong:rgba(245,158,11,0.45);
+
+  --text:#1c1304;
+  --text-muted:#7a5f27;
+  --text-faint:#a98d54;
+
+  --accent-ink:#1c1304;
+  --accent-soft:rgba(245,158,11,0.18);
+  --accent-border:rgba(245,158,11,0.5);
+
+  --link:var(--amber-700);
+  --link-hover:var(--amber-600);
+
+  --shadow-card:0 1px 2px rgba(120,70,0,0.06), 0 18px 36px -16px rgba(180,90,0,0.22);
+  --shadow-glow:0 10px 30px -8px rgba(245,158,11,0.4);
+  --glow-radial:radial-gradient(circle at 50% 20%, rgba(245,158,11,0.28) 0%, transparent 55%); /* @kind other */
+}

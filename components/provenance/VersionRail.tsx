@@ -15,8 +15,8 @@ const VersionRail: React.FC<VersionRailProps> = ({ versions, selected, onSelect,
   <div style={style} {...rest}>
     {title && (
       <p style={{
-        fontFamily: 'var(--font-mono)', fontSize: '0.65rem', letterSpacing: '0.08em',
-        textTransform: 'uppercase', color: 'var(--color-text-muted)', margin: '0 0 16px',
+        fontFamily: 'var(--font-mono)', fontSize: 'var(--text-label-sm)', letterSpacing: 'var(--ls-wide)',
+        textTransform: 'uppercase', color: 'var(--text-faint)', margin: '0 0 16px',
       }}>{title}</p>
     )}
     {versions.map((v, i) => {
@@ -26,30 +26,30 @@ const VersionRail: React.FC<VersionRailProps> = ({ versions, selected, onSelect,
         <button key={v.id} onClick={onSelect ? () => onSelect(v.id) : undefined} style={{
           position: 'relative', display: 'block', width: '100%', textAlign: 'left',
           padding: '6px 8px 18px 24px', border: 'none', cursor: onSelect ? 'pointer' : 'default',
-          borderRadius: 8,
-          background: isSel ? 'linear-gradient(90deg, var(--prov-human-tint), transparent)' : 'transparent',
-          color: 'inherit', fontFamily: 'inherit', fontSize: 'inherit',
+          borderRadius: 'var(--radius-sm)',
+          background: isSel ? 'linear-gradient(90deg, var(--accent-soft), transparent)' : 'transparent',
+          color: 'inherit', fontFamily: 'inherit',
         }}>
           {i < versions.length - 1 && (
-            <span style={{ position: 'absolute', left: 11, top: 16, bottom: -4, width: 1, background: 'var(--color-border-light)' }} />
+            <span style={{ position: 'absolute', left: 11, top: 16, bottom: -4, width: 1, background: 'var(--border-strong)' }} />
           )}
           <span style={{
             position: 'absolute', left: 7, top: 13, width: 9, height: 9, borderRadius: '50%',
             background: hue, border: '2px solid ' + hue,
           }} />
-          <span style={{ display: 'block', fontFamily: 'var(--font-mono)', fontSize: '0.78rem', fontWeight: 600, color: 'var(--color-text-primary)', marginBottom: 3 }}>
+          <span style={{ display: 'block', fontFamily: 'var(--font-mono)', fontSize: 'var(--text-label)', fontWeight: 600, color: 'var(--text)', marginBottom: 3 }}>
             {v.id} · {v.label}{' '}
             <span style={{
-              fontSize: '0.6rem', letterSpacing: '0.08em', textTransform: 'uppercase',
-              padding: '1px 6px', borderRadius: 999, fontWeight: 500,
+              fontSize: 'var(--text-label-sm)', letterSpacing: 'var(--ls-wide)', textTransform: 'uppercase',
+              padding: '1px 6px', borderRadius: 'var(--radius-pill)', fontWeight: 500,
               color: hue, border: '1px solid ' + hue,
             }}>{v.author === 'ai' ? 'AI' : 'Human'}</span>
           </span>
-          <span style={{ display: 'block', fontFamily: 'var(--font-mono)', fontSize: '0.66rem', color: 'var(--color-text-muted)', marginBottom: 4 }}>
+          <span style={{ display: 'block', fontFamily: 'var(--font-mono)', fontSize: 'var(--text-label-sm)', color: 'var(--text-faint)', marginBottom: 4 }}>
             {v.ts}{isSel ? ' · viewing' : ''}
           </span>
           {v.note && (
-            <span style={{ display: 'block', fontSize: '0.82rem', lineHeight: 1.45, color: 'var(--color-text-muted)' }}>{v.note}</span>
+            <span style={{ display: 'block', fontSize: '0.82rem', lineHeight: 1.45, color: 'var(--text-muted)' }}>{v.note}</span>
           )}
         </button>
       );

@@ -22,7 +22,7 @@ const Legend: React.FC<{ doc: ProvenanceDoc }> = ({ doc }) => {
   const { share } = doc.receipt;
   const needsCheck = Object.keys(doc.sources).find(k => doc.sources[k].status === 'needs-check');
   return (
-    <div style={{ display: 'flex', gap: 14, alignItems: 'center', flexWrap: 'wrap', fontFamily: 'var(--font-mono)', fontSize: '0.72rem', color: 'var(--color-text-muted)' }}>
+    <div style={{ display: 'flex', gap: 14, alignItems: 'center', flexWrap: 'wrap', fontFamily: 'var(--font-mono)', fontSize: 'var(--text-label)', color: 'var(--text-muted)' }}>
       <span><span style={{ display: 'inline-block', width: 13, height: 4, borderRadius: 2, background: 'var(--prov-human)', marginRight: 6, verticalAlign: 'middle' }} />Human {share.human}%</span>
       <span><span style={{ display: 'inline-block', width: 13, height: 4, borderRadius: 2, background: 'linear-gradient(90deg, var(--prov-ai), var(--prov-human))', marginRight: 6, verticalAlign: 'middle' }} />AI, edited {share.aiEdited}%</span>
       <span><span style={{ display: 'inline-block', width: 13, height: 4, borderRadius: 2, background: 'var(--prov-ai)', marginRight: 6, verticalAlign: 'middle' }} />AI {share.ai}%</span>
@@ -54,7 +54,7 @@ const WritingPage: React.FC = () => {
   const article = (withAttribution: boolean) => (
     <div className="max-w-2xl mx-auto">
       {DOC.blocks.map(b => (
-        <p key={b.id} className="mb-7" style={{ fontSize: '1.15rem', lineHeight: 1.8, color: 'var(--color-text-secondary)' }}>
+        <p key={b.id} className="mb-7" style={{ fontSize: 'var(--text-body-lg)', lineHeight: 1.75, color: 'var(--text)' }}>
           {b.spans.map((sp, i) => withAttribution ? (
             <React.Fragment key={i}>
               <AttributionText
@@ -120,27 +120,27 @@ const WritingPage: React.FC = () => {
         title="Writing | Tyler Vickers"
         description="Essays published with their full revision history: the prompt, every draft, redlines, and where the human intervened."
       />
-      <div className="container mx-auto px-6 pt-16 pb-10">
+      <div className="page-container pt-16 pb-10">
         {ESSAYS.length > 1 && <div className="max-w-2xl mx-auto mb-8 flex flex-wrap gap-2">
           {ESSAYS.map((e, i) => (
             <button key={e.meta.title} onClick={() => switchEssay(i)} style={{
-              fontFamily: 'var(--font-mono)', fontSize: '0.72rem', padding: '5px 14px',
-              borderRadius: 999, cursor: 'pointer',
-              border: '1px solid ' + (i === docIdx ? 'var(--color-accent-primary)' : 'var(--color-border-light)'),
-              background: i === docIdx ? 'var(--prov-human-tint)' : 'transparent',
-              color: i === docIdx ? 'var(--color-accent-primary)' : 'var(--color-text-muted)',
+              fontFamily: 'var(--font-body)', fontSize: 'var(--text-ui)', fontWeight: 500, padding: '5px 14px',
+              borderRadius: 'var(--radius-pill)', cursor: 'pointer',
+              border: '1px solid ' + (i === docIdx ? 'var(--accent)' : 'var(--border-strong)'),
+              background: i === docIdx ? 'var(--accent-soft)' : 'transparent',
+              color: i === docIdx ? 'var(--accent)' : 'var(--text-muted)',
             }}>{e.meta.title}</button>
           ))}
         </div>}
-        <div className="max-w-2xl mx-auto border-b pb-8 mb-10" style={{ borderColor: 'var(--color-border)' }}>
-          <p className="uppercase mb-4" style={{ fontFamily: 'var(--font-mono)', fontSize: '0.78rem', letterSpacing: '0.08em', color: 'var(--color-accent-primary)' }}>
+        <div className="max-w-2xl mx-auto border-b border-line pb-8 mb-10">
+          <p className="eyebrow text-accent mb-4">
             Essay · Writing, with receipts
           </p>
-          <h1 className="mb-3" style={{ fontSize: '2.75rem' }}>{DOC.meta.title}</h1>
-          <p style={{ fontFamily: 'var(--font-mono)', fontSize: '0.75rem', color: 'var(--color-text-muted)' }}>
+          <h1 className="text-display-2 mb-3">{DOC.meta.title}</h1>
+          <p className="font-mono text-label text-faint">
             {DOC.meta.author} · {DOC.meta.published} · {DOC.meta.readingMinutes} min read
           </p>
-          <p className="mt-5" style={{ fontSize: '0.95rem', color: 'var(--color-text-muted)', lineHeight: 1.7 }}>
+          <p className="mt-5 text-small text-muted">
             This piece is published with its provenance: the prompt that seeded it, every draft, and
             redlines showing where I pushed back. Switch modes in the bar below.
           </p>

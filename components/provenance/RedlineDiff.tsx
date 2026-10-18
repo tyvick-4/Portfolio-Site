@@ -15,16 +15,16 @@ interface RedlineDiffProps extends React.HTMLAttributes<HTMLDivElement> {
     red strikethrough deletions, green underline insertions. */
 const RedlineDiff: React.FC<RedlineDiffProps> = ({ label, parts, delWords, insWords, note, style, ...rest }) => (
   <div style={{
-    border: '1px solid var(--color-border)', borderRadius: 12,
-    padding: '20px 24px', background: 'var(--color-bg-card)', ...style,
+    border: '1px solid var(--border)', borderRadius: 'var(--radius-md)',
+    padding: '20px 24px', background: 'var(--surface)', ...style,
   }} {...rest}>
     {label && (
       <p style={{
-        fontFamily: 'var(--font-mono)', fontSize: '0.7rem', letterSpacing: '0.08em',
-        textTransform: 'uppercase', color: 'var(--color-text-muted)', margin: '0 0 10px', lineHeight: 1.4,
+        fontFamily: 'var(--font-mono)', fontSize: 'var(--text-label)', letterSpacing: 'var(--ls-wide)',
+        textTransform: 'uppercase', color: 'var(--text-faint)', margin: '0 0 10px', lineHeight: 1.4,
       }}>{label}</p>
     )}
-    <p style={{ fontSize: '1.0625rem', lineHeight: 1.75, margin: 0, color: 'var(--color-text-secondary)' }}>
+    <p style={{ fontSize: 'var(--text-body)', lineHeight: 1.75, margin: 0, color: 'var(--text)' }}>
       {parts.map((p, i) => p.t === 'del'
         ? <del key={i} style={{ color: 'var(--prov-del)', background: 'var(--prov-del-tint)', textDecorationThickness: 1.5 }}>{p.text}</del>
         : p.t === 'ins'
@@ -32,7 +32,7 @@ const RedlineDiff: React.FC<RedlineDiffProps> = ({ label, parts, delWords, insWo
           : <span key={i}>{p.text}</span>)}
     </p>
     {(delWords != null || insWords != null || note) && (
-      <p style={{ fontFamily: 'var(--font-mono)', fontSize: '0.72rem', color: 'var(--color-text-muted)', margin: '12px 0 0', lineHeight: 1.5 }}>
+      <p style={{ fontFamily: 'var(--font-mono)', fontSize: 'var(--text-label)', color: 'var(--text-faint)', margin: '12px 0 0', lineHeight: 1.5 }}>
         {delWords != null && <span style={{ color: 'var(--prov-del)' }}>−{delWords}</span>}
         {delWords != null && insWords != null && ' / '}
         {insWords != null && <span style={{ color: 'var(--prov-ins)' }}>+{insWords} words</span>}

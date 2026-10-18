@@ -1,0 +1,34 @@
+:root{
+  --font-display:'Playfair Display', Georgia, serif;
+  --font-body:'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-mono:'JetBrains Mono', 'SF Mono', Consolas, monospace;
+
+  --text-display-1:clamp(2.75rem, 5vw, 4.5rem);
+  --text-display-2:clamp(2.25rem, 3.6vw, 3.25rem);
+  --text-h1:2.5rem;
+  --text-h2:1.875rem;
+  --text-h3:1.5rem;
+  --text-body-lg:1.25rem;
+  --text-body:1.0625rem;
+  --text-small:0.9375rem;
+  --text-eyebrow:0.8125rem; /* mono, uppercase section eyebrows */
+  --text-label:0.75rem;     /* mono: tags, meta lines, timestamps */
+  --text-label-sm:0.6875rem;/* mono: micro tags inside dense UI */
+  --text-ui:0.875rem;       /* Inter: compact controls (toggles, tabs) */
+
+  --weight-display:600;     /* @kind other */
+  --weight-numeral:700;     /* @kind other */
+
+  --lh-display:1.15; /* @kind other */
+  --lh-heading:1.3; /* @kind other */
+  --lh-body:1.7; /* @kind other */
+
+  --ls-tight:-0.02em;
+  --ls-normal:0.01em;
+  --ls-wide:0.08em;
+}
+/* Paper Editorial favors a sans display face over the serif */
+:root[data-theme='paper']{ --font-display:'Archivo', var(--font-body); }
+/* Exploration overrides — set data-font on <html> to preview alternates */
+:root[data-font='archivo']{ --font-display:'Archivo', var(--font-body); }
+:root[data-font='bricolage']{ --font-display:'Bricolage Grotesque', var(--font-body); }
