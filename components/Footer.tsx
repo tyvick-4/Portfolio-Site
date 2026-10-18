@@ -17,11 +17,11 @@ const Footer: React.FC = () => {
           </a>
         </div>
         <p>&copy; {new Date().getFullYear()} {PERSONAL_INFO.name}. All Rights Reserved.</p>
-        <p className="mt-2 text-ui text-faint">
+        <p className="mt-2 text-ui text-muted">
           Name banner by{' '}
-          <a href="https://ascii.rest" target="_blank" rel="noopener noreferrer" className="text-faint underline hover:text-accent transition-colors">ascii.rest</a>
+          <a href="https://ascii.rest" target="_blank" rel="noopener noreferrer" className="text-muted underline hover:text-accent transition-colors">ascii.rest</a>
           , made by{' '}
-          <a href="https://github.com/bas3line" target="_blank" rel="noopener noreferrer" className="text-faint underline hover:text-accent transition-colors">@bas3line</a>
+          <a href="https://github.com/bas3line" target="_blank" rel="noopener noreferrer" className="text-muted underline hover:text-accent transition-colors">@bas3line</a>
           {' '}(MIT).
         </p>
       </div>
