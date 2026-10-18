@@ -2,6 +2,7 @@ import React from 'react';
 import { motion } from 'motion/react';
 import { PERSONAL_INFO, SKILL_CATEGORIES } from '../constants';
 import SEO, { getPersonSchema, getWebSiteSchema, getBreadcrumbSchema } from '../components/SEO';
+import Button from '../components/ui/Button';
 
 const AboutPage: React.FC = () => {
   return (
@@ -20,14 +21,14 @@ const AboutPage: React.FC = () => {
           ]),
         ]}
       />
-      <div className="container mx-auto px-6 py-16">
+      <div className="page-container py-16">
       <motion.div 
         className="max-w-4xl mx-auto"
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
       >
-        <h1 className="text-5xl text-white mb-8 text-center">About Me</h1>
+        <h1 className="text-display-2 mb-12 text-center">About Me</h1>
         
         <div className="flex flex-col md:flex-row gap-12 items-start mb-16">
           <motion.div 
@@ -37,11 +38,10 @@ const AboutPage: React.FC = () => {
             transition={{ duration: 0.8, delay: 0.2 }}
           >
             <div className="relative">
-              <div className="absolute inset-0 bg-gradient-to-br from-amber-500/20 to-orange-500/20 rounded-2xl blur-xl" />
-              <img 
+              <img
                 src={PERSONAL_INFO.photo}
-                alt={PERSONAL_INFO.name} 
-                className="relative rounded-2xl w-full shadow-2xl border-2 border-[#292520]"
+                alt={PERSONAL_INFO.name}
+                className="relative rounded-xl w-full border-2 border-accent-border shadow-glow"
               />
             </div>
           </motion.div>
@@ -53,15 +53,15 @@ const AboutPage: React.FC = () => {
             transition={{ duration: 0.8, delay: 0.3 }}
           >
             <div>
-              <h2 className="text-3xl text-white mb-4 tracking-tight">{PERSONAL_INFO.name}</h2>
-              <p className="text-xl text-amber-400 mb-6 tracking-wide">{PERSONAL_INFO.title}</p>
-              <p className="text-stone-300 leading-loose text-lg tracking-wide">
+              <h2 className="text-h1 mb-3">{PERSONAL_INFO.name}</h2>
+              <p className="font-display text-h3 font-semibold text-accent mb-6">{PERSONAL_INFO.title}</p>
+              <p className="text-body-lg text-muted">
                 {PERSONAL_INFO.valueProp}
               </p>
             </div>
             
             <div className="pt-6">
-              <p className="text-stone-300 leading-loose tracking-wide">
+              <p className="text-body text-muted">
                 I thrive at the intersection of data, user empathy, and technical execution. 
                 Whether it's building lifecycle models to reduce churn, launching creator tools 
                 that scale to millions, or navigating complex cross-functional challenges, I bring 
@@ -76,24 +76,24 @@ const AboutPage: React.FC = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.4 }}
         >
-          <h2 className="text-3xl text-white mb-10 text-center">Skills & Expertise</h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <h2 className="mb-10 text-center">Skills & Expertise</h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {SKILL_CATEGORIES.map((category, categoryIndex) => (
               <motion.div 
                 key={category.title}
-                className="bg-gradient-to-br from-[#1f1b16] to-[#252018] p-8 rounded-2xl border border-[#292520] hover:border-[#3a342c] transition-all duration-300"
+                className="bg-surface p-8 rounded-xl border border-line shadow-card hover:border-line-strong transition-colors duration-500"
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.5 + categoryIndex * 0.1 }}
               >
-                <h3 className="text-xl text-amber-400 mb-6">{category.title}</h3>
+                <h3 className="text-h3 mb-6">{category.title}</h3>
                 <ul className="space-y-3">
                   {category.skills.map((skill) => (
                     <li 
                       key={skill.name} 
-                      className="text-stone-300 flex items-start"
+                      className="text-body text-muted flex items-start"
                     >
-                      <span className="text-amber-400 mr-3">•</span>
+                      <span className="flex-shrink-0 w-1.5 h-1.5 mt-[0.7em] mr-3 bg-accent rounded-full" aria-hidden="true" />
                       <span>{skill.name}</span>
                     </li>
                   ))}
@@ -104,25 +104,23 @@ const AboutPage: React.FC = () => {
         </motion.div>
         <motion.div
           id="consultation"
-          className="mt-16 bg-gradient-to-br from-amber-500/10 to-orange-500/10 border border-amber-500/30 rounded-2xl p-10 text-center"
+          className="mt-16 bg-accent-soft border border-accent-border rounded-xl p-10 md:p-14 text-center"
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.7 }}
         >
-          <h2 className="text-3xl text-white mb-4">Book a Free 15-Minute Intro Call</h2>
-          <p className="text-stone-300 text-lg leading-loose mb-8 max-w-xl mx-auto">
+          <h2 className="text-h2 mb-4">Book a Free 15-Minute Intro Call</h2>
+          <p className="text-body-lg text-muted mb-8 max-w-xl mx-auto">
             Want to talk product strategy, get career advice, or explore a collaboration? Let's start with a quick 15-minute intro call — no commitment required.
           </p>
-          <motion.a
+          <Button
             href="https://calendly.com/tyvick/15min?month=2026-05"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-block bg-amber-500 text-black text-sm font-medium py-3 px-10 rounded-xl hover:bg-orange-500 transition-all duration-300 transform hover:scale-105 hover:shadow-lg hover:shadow-amber-500/30 tracking-wider"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.98 }}
+            size="lg"
           >
             Schedule a Meeting
-          </motion.a>
+          </Button>
         </motion.div>
       </motion.div>
     </div>

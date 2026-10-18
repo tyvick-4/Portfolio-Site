@@ -15,13 +15,15 @@ const SourceChip: React.FC<SourceChipProps> = ({ id, origin, status = 'verified'
   return (
     <span style={{
       display: 'inline-flex', alignItems: 'center', gap: 8,
-      fontFamily: 'var(--font-mono)', fontSize: '0.72rem', color: 'var(--color-text-muted)',
-      background: 'var(--color-bg-card)', border: '1px solid var(--color-border)',
-      borderRadius: 999, padding: '4px 12px', ...style,
+      fontFamily: 'var(--font-mono)', fontSize: 'var(--text-label)', color: 'var(--text-muted)',
+      background: 'var(--surface)', border: '1px solid var(--border)',
+      borderRadius: 'var(--radius-pill)', padding: '4px 12px', ...style,
     }} {...rest}>
-      <b style={{ color: 'var(--color-text-primary)', fontWeight: 600 }}>{id}</b>
+      <b style={{ color: 'var(--text)', fontWeight: 600 }}>{id}</b>
       {origin && <span style={{ opacity: 0.9 }}>{origin}</span>}
-      <span style={{ color: ok ? 'var(--prov-verified)' : 'var(--prov-needs-check)', fontWeight: 600 }}>
+      <span style={{ color: ok ? 'var(--prov-verified)' : 'var(--prov-needs-check)', fontWeight: 600,
+        letterSpacing: 'var(--ls-normal)',
+      }}>
         {ok ? '✓ verified' : '⚠ needs-check'}
       </span>
     </span>

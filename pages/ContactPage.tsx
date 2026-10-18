@@ -4,6 +4,7 @@ import { PERSONAL_INFO } from '../constants';
 import LinkedInIcon from '../components/icons/LinkedInIcon';
 import MailIcon from '../components/icons/MailIcon';
 import SEO, { getPersonSchema, getWebSiteSchema, getBreadcrumbSchema } from '../components/SEO';
+import Button from '../components/ui/Button';
 
 const ContactPage: React.FC = () => {
   const [formData, setFormData] = useState({
@@ -50,36 +51,33 @@ const ContactPage: React.FC = () => {
           ]),
         ]}
       />
-      <div className="container mx-auto px-6 py-16">
+      <div className="page-container py-16">
       <motion.div 
         className="max-w-2xl mx-auto"
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
       >
-        <h1 className="text-5xl text-white mb-6 text-center">Let's Connect</h1>
-        <p className="text-xl text-slate-400 mb-12 text-center">
+        <h1 className="text-display-2 mb-6 text-center">Let's Connect</h1>
+        <p className="text-body-lg text-muted mb-12 text-center">
           Interested in working together or just want to chat? Reach out!
         </p>
 
         <motion.div
-          className="bg-gradient-to-br from-amber-500/10 to-orange-500/10 border border-amber-500/30 rounded-2xl p-8 mb-10 text-center"
+          className="bg-accent-soft border border-accent-border rounded-xl p-8 md:p-10 mb-10 text-center"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.1 }}
         >
-          <h2 className="text-2xl text-white mb-3">Book a Free 15-Minute Intro Call</h2>
-          <p className="text-stone-300 mb-6">Schedule a quick 15-minute intro call to discuss product strategy, career advice, or potential collaborations — no commitment required.</p>
-          <motion.a
+          <h2 className="text-h3 mb-3">Book a Free 15-Minute Intro Call</h2>
+          <p className="text-body text-muted mb-6">Schedule a quick 15-minute intro call to discuss product strategy, career advice, or potential collaborations — no commitment required.</p>
+          <Button
             href="https://calendly.com/tyvick/15min?month=2026-05"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-block bg-amber-500 text-black text-sm font-medium py-3 px-8 rounded-xl hover:bg-orange-500 transition-all duration-300 transform hover:scale-105 hover:shadow-lg hover:shadow-amber-500/30 tracking-wider"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.98 }}
           >
             Schedule a Meeting
-          </motion.a>
+          </Button>
         </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
@@ -87,34 +85,34 @@ const ContactPage: React.FC = () => {
             href={PERSONAL_INFO.linkedin}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center justify-center gap-4 bg-gradient-to-br from-[#1f1b16] to-[#252018] p-6 rounded-xl border border-[#292520] hover:border-amber-500/50 transition-all duration-300 group"
+            className="flex items-center justify-center gap-4 bg-surface p-6 rounded-md border border-line shadow-card hover:border-accent-border transition-colors duration-250 group"
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
           >
-            <LinkedInIcon className="w-8 h-8 text-amber-400 group-hover:text-amber-300 transition-colors" />
-            <span className="text-white">LinkedIn</span>
+            <LinkedInIcon className="w-8 h-8 text-accent group-hover:text-accent-hover transition-colors" />
+            <span className="text-body text-ink">LinkedIn</span>
           </motion.a>
 
           <motion.a 
             href={`mailto:${PERSONAL_INFO.email}`}
-            className="flex items-center justify-center gap-4 bg-gradient-to-br from-[#1f1b16] to-[#252018] p-6 rounded-xl border border-[#292520] hover:border-amber-500/50 transition-all duration-300 group"
+            className="flex items-center justify-center gap-4 bg-surface p-6 rounded-md border border-line shadow-card hover:border-accent-border transition-colors duration-250 group"
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
           >
-            <MailIcon className="w-8 h-8 text-amber-400 group-hover:text-amber-300 transition-colors" />
-            <span className="text-white">Email</span>
+            <MailIcon className="w-8 h-8 text-accent group-hover:text-accent-hover transition-colors" />
+            <span className="text-body text-ink">Email</span>
           </motion.a>
         </div>
 
         <motion.form 
           onSubmit={handleSubmit} 
-          className="bg-gradient-to-br from-[#1f1b16] to-[#252018] p-8 rounded-2xl border border-[#292520] space-y-6"
+          className="bg-surface p-8 rounded-xl border border-line shadow-card space-y-6"
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
         >
           <div>
-            <label htmlFor="name" className="block text-stone-300 mb-2">Name</label>
+            <label htmlFor="name" className="block text-small text-muted mb-2">Name</label>
             <input
               type="text"
               id="name"
@@ -122,12 +120,12 @@ const ContactPage: React.FC = () => {
               value={formData.name}
               onChange={handleChange}
               required
-              className="w-full px-4 py-3 bg-[#0a0a0a] border border-[#292520] rounded-lg text-white focus:outline-none focus:border-amber-500 transition-colors"
+              className="w-full px-3.5 py-3 bg-bg border border-line rounded-sm text-ink focus:outline-none focus:border-accent transition-colors"
             />
           </div>
 
           <div>
-            <label htmlFor="email" className="block text-stone-300 mb-2">Email</label>
+            <label htmlFor="email" className="block text-small text-muted mb-2">Email</label>
             <input
               type="email"
               id="email"
@@ -135,12 +133,12 @@ const ContactPage: React.FC = () => {
               value={formData.email}
               onChange={handleChange}
               required
-              className="w-full px-4 py-3 bg-[#0a0a0a] border border-[#292520] rounded-lg text-white focus:outline-none focus:border-amber-500 transition-colors"
+              className="w-full px-3.5 py-3 bg-bg border border-line rounded-sm text-ink focus:outline-none focus:border-accent transition-colors"
             />
           </div>
 
           <div>
-            <label htmlFor="message" className="block text-stone-300 mb-2">Message</label>
+            <label htmlFor="message" className="block text-small text-muted mb-2">Message</label>
             <textarea
               id="message"
               name="message"
@@ -148,18 +146,13 @@ const ContactPage: React.FC = () => {
               onChange={handleChange}
               required
               rows={6}
-              className="w-full px-4 py-3 bg-[#0a0a0a] border border-[#292520] rounded-lg text-white focus:outline-none focus:border-amber-500 transition-colors resize-none"
+              className="w-full px-3.5 py-3 bg-bg border border-line rounded-sm text-ink focus:outline-none focus:border-accent transition-colors resize-none"
             />
           </div>
 
-          <motion.button
-            type="submit"
-            className="w-full bg-amber-500 text-black text-sm font-medium py-3 px-6 rounded-lg hover:bg-orange-500 transition-all duration-300 transform hover:scale-[1.02] tracking-wider"
-            whileHover={{ scale: 1.02 }}
-            whileTap={{ scale: 0.98 }}
-          >
+          <Button type="submit" className="w-full hover:scale-[1.02]!">
             Send Message
-          </motion.button>
+          </Button>
         </motion.form>
       </motion.div>
     </div>

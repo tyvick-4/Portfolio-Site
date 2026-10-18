@@ -11,7 +11,7 @@ import WritingPage from './pages/WritingPage';
 
 const Layout: React.FC = () => {
   return (
-    <div className="bg-slate-900 text-slate-300 min-h-screen font-sans antialiased">
+    <div className="bg-bg text-muted min-h-screen font-sans">
       <Header />
       <main className="pt-20">
         <Outlet />

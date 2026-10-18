@@ -15,12 +15,13 @@ const TrustReceipt: React.FC<TrustReceiptProps> = ({ versions, humanPct, interve
   return (
     <span style={{
       display: 'inline-flex', alignItems: 'center', gap: 8, flexWrap: 'wrap',
-      fontFamily: 'var(--font-mono)', fontSize: '0.75rem', color: 'var(--color-text-muted)', ...style,
+      fontFamily: 'var(--font-mono)', fontSize: 'var(--text-label)', color: 'var(--text-muted)',
+      letterSpacing: 'var(--ls-normal)', ...style,
     }} {...rest}>
       <span style={{ color: 'var(--prov-human)', fontSize: '0.85rem' }}>◈</span>
-      <span><b style={{ color: 'var(--color-text-primary)', fontWeight: 600 }}>{versions} versions</b></span><Dot />
-      <span><b style={{ color: 'var(--color-text-primary)', fontWeight: 600 }}>{humanPct}%</b> human-written or edited</span><Dot />
-      <span><b style={{ color: 'var(--color-text-primary)', fontWeight: 600 }}>{interventions}</b> interventions</span>
+      <span><b style={{ color: 'var(--text)', fontWeight: 600 }}>{versions} versions</b></span><Dot />
+      <span><b style={{ color: 'var(--text)', fontWeight: 600 }}>{humanPct}%</b> human-written or edited</span><Dot />
+      <span><b style={{ color: 'var(--text)', fontWeight: 600 }}>{interventions}</b> interventions</span>
       {fromPrompt && (<><Dot /><span>started from a prompt →</span></>)}
     </span>
   );

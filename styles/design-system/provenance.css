@@ -1,0 +1,81 @@
+/* Provenance — semantic attribution + redline tokens.
+   These are data-encoding colors (like success/danger), not brand accents:
+   the ONE brand hue stays amber, and "human-written" claims it deliberately —
+   the human is the accent. AI gets a muted slate; AI-edited-by-human renders
+   as a slate-to-amber gradient underline (both hands touched it).
+   Redlines follow proofreader convention: red strike, green insert. */
+
+/* Dark navy (default) */
+:root{
+  --prov-human:var(--amber-400);
+  --prov-human-tint:rgba(251,191,36,0.10);
+  --prov-ai:#8fa9c7;
+  --prov-ai-tint:rgba(143,169,199,0.12);
+  --prov-edited-tint:rgba(196,180,157,0.10);
+  --prov-del:#e0736b;
+  --prov-del-tint:rgba(224,115,107,0.12);
+  --prov-ins:#7fb389;
+  --prov-ins-tint:rgba(127,179,137,0.12);
+  --prov-verified:#7fb389;
+  --prov-needs-check:#e0736b;
+}
+
+/* Light */
+:root[data-theme='light']{
+  --prov-human:var(--amber-600);
+  --prov-human-tint:rgba(217,119,6,0.09);
+  --prov-ai:#4c6c8c;
+  --prov-ai-tint:rgba(76,108,140,0.10);
+  --prov-edited-tint:rgba(120,110,90,0.08);
+  --prov-del:#b3261e;
+  --prov-del-tint:rgba(179,38,30,0.08);
+  --prov-ins:#3f6c45;
+  --prov-ins-tint:rgba(63,108,69,0.10);
+  --prov-verified:#3f6c45;
+  --prov-needs-check:#b3261e;
+}
+
+/* Paper Editorial — the reader's home turf; human lands on the prototype's ochre */
+:root[data-theme='paper']{
+  --prov-human:var(--amber-700);
+  --prov-human-tint:rgba(180,83,9,0.09);
+  --prov-ai:#4c6c8c;
+  --prov-ai-tint:rgba(76,108,140,0.10);
+  --prov-edited-tint:rgba(124,92,60,0.08);
+  --prov-del:#b3261e;
+  --prov-del-tint:rgba(179,38,30,0.08);
+  --prov-ins:#3f6c45;
+  --prov-ins-tint:rgba(63,108,69,0.10);
+  --prov-verified:#3f6c45;
+  --prov-needs-check:#b3261e;
+}
+
+/* Gallery */
+:root[data-theme='gallery']{
+  --prov-human:var(--amber-600);
+  --prov-human-tint:rgba(217,119,6,0.08);
+  --prov-ai:#5a6f84;
+  --prov-ai-tint:rgba(90,111,132,0.10);
+  --prov-edited-tint:rgba(110,105,95,0.08);
+  --prov-del:#b3261e;
+  --prov-del-tint:rgba(179,38,30,0.07);
+  --prov-ins:#3f6c45;
+  --prov-ins-tint:rgba(63,108,69,0.09);
+  --prov-verified:#3f6c45;
+  --prov-needs-check:#b3261e;
+}
+
+/* Amber Pop — human needs the DEEP amber to stand off the warm ground */
+:root[data-theme='amber']{
+  --prov-human:#92400e;
+  --prov-human-tint:rgba(146,64,14,0.10);
+  --prov-ai:#56718c;
+  --prov-ai-tint:rgba(86,113,140,0.12);
+  --prov-edited-tint:rgba(120,95,55,0.10);
+  --prov-del:#a1231c;
+  --prov-del-tint:rgba(161,35,28,0.09);
+  --prov-ins:#3b6641;
+  --prov-ins-tint:rgba(59,102,65,0.11);
+  --prov-verified:#3b6641;
+  --prov-needs-check:#a1231c;
+}

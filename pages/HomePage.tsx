@@ -1,11 +1,12 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import { motion } from 'motion/react';
 import { Banner } from 'ascii.rest/react';
 import { PERSONAL_INFO, CAREER_HIGHLIGHTS, CASE_STUDIES } from '../constants';
 import MetricCard from '../components/MetricCard';
 import LazyVideo from '../components/LazyVideo';
 import SEO, { getPersonSchema, getWebSiteSchema } from '../components/SEO';
+import Button from '../components/ui/Button';
+import SectionHeading from '../components/ui/SectionHeading';
 
 const HomePage: React.FC = () => {
   return (
@@ -28,13 +29,10 @@ const HomePage: React.FC = () => {
           },
         ]}
       />
-      <div className="container mx-auto px-6 py-12">
-      {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center bg-gradient-to-br from-[#0a0a0a] via-[#1a1410] to-[#0a0a0a]">
-        <div className="absolute inset-0 opacity-20">
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,_#fbbf24_0%,_transparent_50%)]"></div>
-        </div>
-        <div className="container mx-auto px-6 py-20 relative z-10 flex flex-col md:flex-row items-center md:items-start gap-12">
+      {/* Hero Section (design-system "radial-glow" hero) */}
+      <section className="relative overflow-hidden min-h-[calc(100vh-5rem)] flex items-center">
+        <div className="absolute inset-0 bg-[image:var(--glow-radial)]" aria-hidden="true" />
+        <div className="page-container py-20 relative z-10 flex flex-col md:flex-row items-center md:items-center gap-12">
           <div className="md:w-3/5">
             {/* Animated name banner by ascii.rest (MIT, @bas3line), credited in the footer.
                 Decorative on desktop; the h1 below keeps the name as real text. */}
@@ -52,13 +50,13 @@ const HomePage: React.FC = () => {
                 font="mixed"
                 shadow="rounded"
                 color={['#fcd34d', '#f59e0b', '#ea580c', '#b91c1c']}
-                shadowColor="#3a342c"
+                shadowColor="#1a2338"
                 glint={{ width: 6 }}
                 speed={2}
               />
             </motion.div>
             <motion.h1
-              className="text-5xl md:text-7xl text-white mb-6 tracking-tight md:sr-only"
+              className="mb-4 text-center md:text-left md:sr-only"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
@@ -66,7 +64,7 @@ const HomePage: React.FC = () => {
               {PERSONAL_INFO.name}
             </motion.h1>
             <motion.h2
-              className="text-2xl md:text-4xl text-amber-400 mb-8 tracking-normal"
+              className="text-h2 text-accent mb-6 text-center md:text-left"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.3 }}
@@ -82,11 +80,11 @@ const HomePage: React.FC = () => {
                 width={256}
                 height={256}
                 fetchPriority="high"
-                className="w-64 h-64 rounded-2xl object-cover border-2 border-amber-500/30 shadow-xl shadow-amber-500/10"
+                className="w-64 h-64 rounded-xl object-cover border-2 border-accent-border shadow-glow"
               />
             </div>
             <motion.p
-              className="text-lg md:text-xl max-w-2xl mx-auto md:mx-0 mb-10 leading-loose tracking-wide"
+              className="text-body-lg text-muted max-w-[560px] mx-auto md:mx-0 mb-10"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.4 }}
@@ -94,54 +92,42 @@ const HomePage: React.FC = () => {
               {PERSONAL_INFO.valueProp}
             </motion.p>
             <motion.div
-              className="flex justify-center md:justify-start space-x-4"
+              className="flex flex-wrap justify-center md:justify-start gap-4"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.5 }}
             >
-              <button
+              <Button
+                size="lg"
                 onClick={() => {
                   document.getElementById('work')?.scrollIntoView({ behavior: 'smooth' });
                 }}
-                className="bg-amber-500 text-black text-sm font-medium py-3 px-8 rounded-xl hover:bg-orange-500 transition-all duration-300 transform hover:scale-105 hover:shadow-lg hover:shadow-amber-500/30 tracking-wider"
               >
                 View My Work
-              </button>
-              <Link
-                to="/contact"
-                className="bg-[#1f1b16] text-white text-sm font-medium py-3 px-8 rounded-xl hover:bg-[#252018] border border-[#292520] transition-all duration-300 transform hover:scale-105 tracking-wider"
-              >
+              </Button>
+              <Button to="/contact" variant="secondary" size="lg">
                 Contact Me
-              </Link>
+              </Button>
             </motion.div>
           </div>
-          <div className="md:w-2/5 hidden md:flex justify-center md:-ml-12">
+          <div className="md:w-2/5 hidden md:flex justify-center">
             <img
               src={PERSONAL_INFO.headshot}
               alt={PERSONAL_INFO.name}
               width={320}
               height={320}
               fetchPriority="high"
-              className="w-64 h-64 md:w-80 md:h-80 rounded-2xl object-cover border-2 border-amber-500/30 shadow-xl shadow-amber-500/10"
+              className="w-64 h-64 md:w-80 md:h-80 rounded-xl object-cover border-2 border-accent-border shadow-glow"
             />
           </div>
         </div>
       </section>
 
+      <div className="page-container">
       {/* Career Highlights Section */}
       <section className="py-24">
-        <motion.div 
-          className="text-center mb-16"
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.6 }}
-        >
-          <h2 className="text-4xl md:text-5xl text-white mb-4">Career Highlights</h2>
-          <p className="text-xl text-slate-400">Proven impact at scale.</p>
-        </motion.div>
-        
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
+        <SectionHeading title="Career Highlights" subtitle="Proven impact at scale." />
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {CAREER_HIGHLIGHTS.map((highlight, index) => (
             <MetricCard
               key={index}
@@ -156,44 +142,31 @@ const HomePage: React.FC = () => {
       </section>
 
       {/* Featured Work Section */}
-      <section id="work" className="py-24">
-        <motion.div 
-          className="text-center mb-16"
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.6 }}
-        >
-          <h2 className="text-4xl md:text-5xl text-white mb-4">Featured Work</h2>
-          <p className="text-xl text-slate-400">Diving deep into product challenges and delivering results.</p>
-        </motion.div>
-        
-        <div className="space-y-16">
+      <section id="work" className="pb-24 scroll-mt-24">
+        <SectionHeading title="Featured Work" subtitle="Diving deep into product challenges and delivering results." />
+        <div className="flex flex-col gap-10">
           {CASE_STUDIES.map((study, index) => (
-            <motion.div 
+            <motion.div
               key={study.slug}
-              initial={{ opacity: 0, y: 50 }}
+              initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-100px" }}
               transition={{ duration: 0.6, delay: index * 0.1 }}
-              className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center bg-gradient-to-br from-slate-900/80 to-slate-800/40 rounded-2xl overflow-hidden shadow-xl border border-slate-800/50 hover:border-slate-700/50 transition-all duration-500 group"
+              className="grid grid-cols-1 lg:grid-cols-[1.1fr_1fr] bg-surface rounded-xl overflow-hidden shadow-card border border-line hover:border-line-strong transition-colors duration-500 group"
             >
-              <div className="p-8 lg:p-12">
-                <h3 className="text-3xl text-white mb-3 leading-snug">{study.title}</h3>
-                <p className="text-amber-400 mb-6 text-lg tracking-wide">{study.company}</p>
-                <p className="mb-8 text-stone-300 leading-loose tracking-wide">{study.subtitle}</p>
-                <Link 
-                  to={`/case-study/${study.slug}`} 
-                  className="inline-block bg-amber-500 text-black text-sm font-medium py-3 px-8 rounded-xl hover:bg-orange-500 transition-all duration-300 transform hover:scale-105 hover:shadow-lg hover:shadow-amber-500/30 tracking-wider"
-                >
-                  Read Case Study
-                </Link>
+              <div className="p-8 lg:p-11 flex flex-col justify-center gap-4">
+                <h3 className="text-h2">{study.title}</h3>
+                <p className="eyebrow text-accent">{study.company}</p>
+                <p className="text-body text-muted">{study.subtitle}</p>
+                <div className="pt-2">
+                  <Button to={`/case-study/${study.slug}`}>Read Case Study</Button>
+                </div>
               </div>
-              <div className="h-64 lg:h-full relative overflow-hidden">
+              <div className="h-64 lg:h-auto lg:min-h-[260px] relative overflow-hidden">
                 {study.heroVideo ? (
                   <LazyVideo
                     src={study.heroVideo}
-                    className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700"
+                    className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
                   />
                 ) : (
                   // heroImage stays a JPG for social previews; a WebP copy sits beside it.
@@ -204,11 +177,11 @@ const HomePage: React.FC = () => {
                       alt={study.title}
                       loading="lazy"
                       decoding="async"
-                      className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700"
+                      className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
                     />
                   </picture>
                 )}
-                <div className="absolute inset-0 bg-gradient-to-t from-slate-900/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                <div className="absolute inset-0 bg-gradient-to-t from-bg/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
               </div>
             </motion.div>
           ))}
@@ -216,29 +189,29 @@ const HomePage: React.FC = () => {
       </section>
 
       {/* Consultation CTA Section */}
-      <section className="py-24">
+      <section className="pb-24">
         <motion.div
-          className="bg-gradient-to-br from-amber-500/10 to-orange-500/10 border border-amber-500/30 rounded-2xl p-12 text-center max-w-3xl mx-auto"
+          className="bg-accent-soft border border-accent-border rounded-xl p-10 md:p-14 text-center max-w-[800px] mx-auto"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.6 }}
         >
-          <h2 className="text-4xl md:text-5xl text-white mb-4">Let's Talk</h2>
-          <p className="text-xl text-stone-300 leading-loose mb-8 max-w-xl mx-auto">
+          <h2 className="mb-4">Let's Talk</h2>
+          <p className="text-body-lg text-muted mb-8 max-w-[480px] mx-auto">
             Interested in product strategy, a career conversation, or working together? Start with a free 15-minute intro call.
           </p>
-          <a
+          <Button
             href="https://calendly.com/tyvick/15min?month=2026-05"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-block bg-amber-500 text-black text-sm font-medium py-3 px-10 rounded-xl hover:bg-orange-500 transition-all duration-300 transform hover:scale-105 hover:shadow-lg hover:shadow-amber-500/30 tracking-wider"
+            size="lg"
           >
             Book a Free Intro Call
-          </a>
+          </Button>
         </motion.div>
       </section>
-    </div>
+      </div>
     </>
   );
 };

@@ -24,6 +24,7 @@ const AttributionText: React.FC<AttributionTextProps> = ({
     paddingBottom: 1,
     borderRadius: 2,
     cursor: interactive ? 'pointer' : undefined,
+    transition: 'filter var(--duration-fast) var(--ease-out)',
   };
   if (origin === 'ai_edited') {
     base.borderImage = 'linear-gradient(90deg, var(--prov-ai), var(--prov-human)) 1';
