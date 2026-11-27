@@ -4,11 +4,16 @@ import type { RecentContribution } from '../types';
 import Badge from './ui/Badge';
 import Button from './ui/Button';
 import { ExternalLinkIcon } from './icons/ExternalLinkIcon';
+import ServerWebPageMini from './illustrations/ServerWebPageMini';
+
+const ILLUSTRATIONS = { 'server-web-page': ServerWebPageMini } as const;
 
 /** Recent Contributions link card. Same anatomy as the Featured Work card (surface, hairline,
     shadow-card, radius-xl, full-bleed media) but lighter: media on the left, h3 title,
     mono source/date eyebrow, tags, and a ghost button out to the external post. */
-const ContributionCard: React.FC<{ item: RecentContribution; index: number }> = ({ item, index }) => (
+const ContributionCard: React.FC<{ item: RecentContribution; index: number }> = ({ item, index }) => {
+  const Illustration = item.illustration ? ILLUSTRATIONS[item.illustration] : null;
+  return (
   <motion.article
     initial={{ opacity: 0, y: 40 }}
     whileInView={{ opacity: 1, y: 0 }}
@@ -17,9 +22,13 @@ const ContributionCard: React.FC<{ item: RecentContribution; index: number }> = 
     className="grid grid-cols-1 xl:grid-cols-[1fr_1.1fr] bg-surface rounded-xl overflow-hidden shadow-card border border-line hover:border-line-strong transition-colors duration-500 group"
   >
     <div className="relative aspect-[10/7] xl:aspect-auto xl:min-h-[300px] overflow-hidden bg-surface-2 border-b xl:border-b-0 xl:border-r border-line">
-      {item.image ? (
+      {Illustration ? (
+        <Illustration className="absolute inset-0 w-full h-full group-hover:scale-105 transition-transform duration-700 ease-out" />
+      ) : item.image ? (
         <picture>
-          <source srcSet={item.image.replace(/\.(jpe?g|png)$/, '.webp')} type="image/webp" />
+          {/\.(jpe?g|png)$/.test(item.image) && (
+            <source srcSet={item.image.replace(/\.(jpe?g|png)$/, '.webp')} type="image/webp" />
+          )}
           <img
             src={item.image}
             alt={item.imageAlt ?? ''}
@@ -55,6 +64,7 @@ const ContributionCard: React.FC<{ item: RecentContribution; index: number }> = 
       </div>
     </div>
   </motion.article>
-);
+  );
+};
 
 export default ContributionCard;

@@ -46,5 +46,6 @@ export interface RecentContribution {
   ctaLabel: string;
   image?: string; // self-hosted JPG/PNG in /public/images with a .webp sibling; a glow panel shows when absent
   imageAlt?: string;
+  illustration?: 'server-web-page'; // built-in SVG illustration; takes precedence over image
   tags: string[];
 }
