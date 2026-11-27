@@ -30,9 +30,9 @@ const HomePage: React.FC = () => {
         ]}
       />
       {/* Hero Section (design-system "radial-glow" hero) */}
-      <section className="relative overflow-hidden min-h-[calc(100vh-5rem)] flex items-center">
+      <section className="relative overflow-hidden flex items-center">
         <div className="absolute inset-0 bg-[image:var(--glow-radial)]" aria-hidden="true" />
-        <div className="page-container py-20 relative z-10 flex flex-col md:flex-row items-center md:items-center gap-12">
+        <div className="page-container pt-20 pb-16 relative z-10 flex flex-col md:flex-row items-center md:items-center gap-12">
           <div className="md:w-3/5">
             {/* Animated name banner by ascii.rest (MIT, @bas3line), credited in the footer.
                 Decorative on desktop; the h1 below keeps the name as real text. */}
