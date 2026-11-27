@@ -45,7 +45,6 @@ export interface RecentContribution {
   href: string; // external post URL
   ctaLabel: string;
   image?: string; // self-hosted JPG/PNG in /public/images with a .webp sibling; a glow panel shows when absent
-  imageMobile?: string; // optional narrower crop served below the md breakpoint (same .webp sibling rule)
   imageAlt?: string;
   tags: string[];
 }
