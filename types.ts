@@ -44,7 +44,7 @@ export interface RecentContribution {
   summary: string;
   href: string; // external post URL
   ctaLabel: string;
-  image?: string; // self-hosted JPG in /public/images with a .webp sibling; a glow panel shows when absent
+  image?: string; // self-hosted JPG/PNG in /public/images with a .webp sibling; a glow panel shows when absent
   imageAlt?: string;
   tags: string[];
 }
