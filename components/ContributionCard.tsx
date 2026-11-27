@@ -17,9 +17,16 @@ const ContributionCard: React.FC<{ item: RecentContribution; index: number }> = 
     transition={{ duration: 0.6, delay: index * 0.1 }}
     className="flex flex-col bg-surface rounded-xl overflow-hidden shadow-card border border-line hover:border-line-strong transition-colors duration-500 group"
   >
-    <div className="relative aspect-[5/2] overflow-hidden bg-surface-2 border-b border-line">
+    <div className={`relative ${item.imageMobile ? 'aspect-[10/7] md:aspect-[5/2]' : 'aspect-[5/2]'} overflow-hidden bg-surface-2 border-b border-line`}>
       {item.image ? (
         <picture>
+          {/* Narrower crop for phones, so screenshot text stays readable below the md breakpoint. */}
+          {item.imageMobile && (
+            <>
+              <source media="(max-width: 767px)" srcSet={item.imageMobile.replace(/\.(jpe?g|png)$/, '.webp')} type="image/webp" />
+              <source media="(max-width: 767px)" srcSet={item.imageMobile} />
+            </>
+          )}
           <source srcSet={item.image.replace(/\.(jpe?g|png)$/, '.webp')} type="image/webp" />
           <img
             src={item.image}

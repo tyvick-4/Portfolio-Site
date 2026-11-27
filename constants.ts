@@ -45,6 +45,7 @@ export const RECENT_CONTRIBUTIONS: RecentContribution[] = [
     href: "https://discord.com/blog/making-content-from-discoverable-servers-easier-to-discover",
     ctaLabel: "Read on the Discord Blog",
     image: "/images/channel-summary-example.png",
+    imageMobile: "/images/channel-summary-example-mobile.png",
     imageAlt: "Example Channel Summary on a Server Web Page: a #grand-theft-auto-vi channel summary titled \"GTA 6 racing mechanics debate\", with two bullet points summarizing 35 messages.",
     tags: ["Server Discovery", "Channel Summaries", "Search & SEO"],
   },
