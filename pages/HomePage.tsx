@@ -1,8 +1,9 @@
 import React from 'react';
 import { motion } from 'motion/react';
 import { Banner } from 'ascii.rest/react';
-import { PERSONAL_INFO, CAREER_HIGHLIGHTS, CASE_STUDIES } from '../constants';
+import { PERSONAL_INFO, CAREER_HIGHLIGHTS, CASE_STUDIES, RECENT_CONTRIBUTIONS } from '../constants';
 import MetricCard from '../components/MetricCard';
+import ContributionCard from '../components/ContributionCard';
 import LazyVideo from '../components/LazyVideo';
 import SEO, { getPersonSchema, getWebSiteSchema } from '../components/SEO';
 import Button from '../components/ui/Button';
@@ -25,6 +26,22 @@ const HomePage: React.FC = () => {
               url: `https://tyvick.com/case-study/${study.slug}`,
               name: study.title,
               description: study.subtitle,
+            })),
+          },
+          {
+            '@type': 'ItemList',
+            name: 'Recent Contributions',
+            description: 'Recent launches Tyler Vickers has helped ship',
+            itemListElement: RECENT_CONTRIBUTIONS.map((item, index) => ({
+              '@type': 'ListItem',
+              position: index + 1,
+              item: {
+                '@type': 'BlogPosting',
+                headline: item.title,
+                url: item.href,
+                datePublished: item.datePublished,
+                description: item.summary,
+              },
             })),
           },
         ]}
@@ -140,6 +157,18 @@ const HomePage: React.FC = () => {
           ))}
         </div>
       </section>
+
+      {/* Recent Contributions Section */}
+      {RECENT_CONTRIBUTIONS.length > 0 && (
+        <section className="pb-24">
+          <SectionHeading title="Recent Contributions" subtitle="Launches I’ve helped ship lately at Discord." />
+          <div className="flex flex-col gap-10">
+            {RECENT_CONTRIBUTIONS.map((item, index) => (
+              <ContributionCard key={item.href} item={item} index={index} />
+            ))}
+          </div>
+        </section>
+      )}
 
       {/* Featured Work Section */}
       <section id="work" className="pb-24 scroll-mt-24">

@@ -35,3 +35,17 @@ export interface SkillCategory {
   title: string;
   skills: Skill[];
 }
+
+export interface RecentContribution {
+  title: string;
+  source: string; // e.g. "Discord Blog"
+  date: string; // display date, e.g. "Nov 16, 2026"
+  datePublished: string; // ISO date for structured data
+  summary: string;
+  href: string; // external post URL
+  ctaLabel: string;
+  image?: string; // self-hosted JPG/PNG in /public/images with a .webp sibling; a glow panel shows when absent
+  imageAlt?: string;
+  illustration?: 'server-web-page'; // built-in SVG illustration; takes precedence over image
+  tags: string[];
+}
