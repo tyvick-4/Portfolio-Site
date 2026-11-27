@@ -1,4 +1,4 @@
-import { CareerHighlight, CaseStudy, SkillCategory } from './types';
+import { CareerHighlight, CaseStudy, RecentContribution, SkillCategory } from './types';
 
 export const PERSONAL_INFO = {
   name: "Tyler Vickers",
@@ -32,6 +32,19 @@ export const CAREER_HIGHLIGHTS: CareerHighlight[] = [
     metric: "$10M+",
     description: "Quarterly Ad Revenue",
     details: "Recovered ad inventory by updating ad policies with 5 cross-functional teams.",
+  },
+];
+
+export const RECENT_CONTRIBUTIONS: RecentContribution[] = [
+  {
+    title: "Enriching Discoverable Discord Servers",
+    source: "Discord Blog",
+    date: "Nov 16, 2026",
+    datePublished: "2026-11-16",
+    summary: "Every Discoverable Server now gets a Server Web Page, with Channel Summaries and admin controls for which public channels show up in web search.",
+    href: "https://discord.com/blog/making-content-from-discoverable-servers-easier-to-discover",
+    ctaLabel: "Read on the Discord Blog",
+    tags: ["Server Discovery", "Channel Summaries", "Search & SEO"],
   },
 ];
 
